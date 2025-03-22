@@ -3,7 +3,7 @@ type QuestionBase = {
     text: string
 }
 
-type MCQQuestion = QuestionBase & {
+type MCQQuestionDTO = QuestionBase & {
     type: "mcq",
     answers: {
         text: string,
@@ -11,13 +11,27 @@ type MCQQuestion = QuestionBase & {
     }[],
 }
 
-type MatchQuestion = QuestionBase & {
+type MatchQuestionDTO = QuestionBase & {
     type: "match",
     staticOptions: string[],
     movableOptions: {
         text: string,
-        correctMatch: MatchQuestion["staticOptions"][number]
-    }
+        correctMatch: MatchQuestionDTO["staticOptions"][number]
+    }[]
 }
+
+type MCQQuestion = MCQQuestionDTO & {
+    answers: {
+        selected: boolean
+    }[]
+}
+
+type MatchQuestion = MatchQuestionDTO & {
+    movableOptions: {
+        matchedTo: MatchQuestionDTO["staticOptions"][number] | null
+    }[]
+}
+
+export type QuestionDTO = MCQQuestionDTO | MatchQuestionDTO;
 
 export type Question = MCQQuestion | MatchQuestion;
