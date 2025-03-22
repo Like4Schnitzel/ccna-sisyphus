@@ -10,7 +10,7 @@
             { text: "Operation Security", correct: false },
             { text: "Operational Security", correct: true },
             { text: "Operative Security", correct: false },
-            { text: "Operational Secrecy", correct: false },
+            { text: "Operational Secrecy", correct: true},
         ],
     }
 </script>

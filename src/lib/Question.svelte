@@ -28,12 +28,17 @@
     if (correctAnswersAmount === 0) {
         console.error("No correct answers found for MCQ:", question);
     }
-    console.log(question);
 
-    let selectedAnswer: number | null = null;
+    let selectedAnswer: number[] | number | null = correctAnswersAmount === 1 ? null : [];
     $: if (question?.type === "mcq" && selectedAnswer !== null) {
-        for (let i = 0; i < question.answers.length; i++) {
-            question.answers[i].selected = i === selectedAnswer;
+        if (correctAnswersAmount === 1) {
+            for (let i = 0; i < question.answers.length; i++) {
+                question.answers[i].selected = i === selectedAnswer;
+            }
+        } else if (selectedAnswer instanceof Array) {
+            for (let i = 0; i < question.answers.length; i++) {
+                question.answers[i].selected = selectedAnswer.includes(i);
+            }
         }
     }
 </script>
@@ -52,6 +57,7 @@
                         {#if correctAnswersAmount === 1}
                             <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
                         {:else}
+                            <input type="checkbox" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
                         {/if}
                         <label for={i.toString()}>{answer.text}</label>
                     </li>
