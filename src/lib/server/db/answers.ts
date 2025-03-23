@@ -24,7 +24,7 @@ const putAnswersForQuestions = (userId: string, questionId: number, answerIndice
 	// we would firstly have to delete the old answers to the question and insert the new ones
 	db.transaction(() => {
 		db.prepare("DELETE FROM answer_to_answers WHERE userId = ? AND questionId = ?").run(userId, questionId);
-		for (let index of answerIndices) {
+		for (const index of answerIndices) {
 			db.prepare("INSERT INTO answer_to_answers(userId, questionId, answerId) VALUES (?, ?, ?)")
 				.run(userId, questionId, index);
 		}
@@ -47,7 +47,7 @@ const getAllAnswersForAllQuestions = (userId: string) => {
 	// but that will surely never happen
 	const answers: Record<number, number[]> = {};
 
-	for (let result of answersResult) {
+	for (const result of answersResult) {
 		answers[result.questionId] ??= [];
 		answers[result.questionId].push(result.answerIdx);
 	}

@@ -2,7 +2,7 @@ import { deleteSession, SESSION_COOKIE_NAME } from "$lib/server/db/sessions";
 import { json, redirect } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 
-export const GET: RequestHandler = async ({ locals, cookies }) => {
+export const GET: RequestHandler = async ({ cookies }) => {
 	const sessionId = cookies.get(SESSION_COOKIE_NAME);
 	if (sessionId) {
 		const hasDeletedSession = await deleteSession(sessionId);

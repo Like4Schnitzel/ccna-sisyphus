@@ -1,7 +1,6 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
 import type { Type } from "arktype";
 import { type } from "arktype";
-import type { EventHandler } from "svelte/elements";
 
 type AddParametersToFunction<F extends Function, P extends unknown[]> = F extends (...a: infer FP) => infer R ? (((...a:[...FP, ...P]) => R) & Pick<F, keyof F>): never;
 
