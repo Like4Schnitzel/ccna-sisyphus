@@ -29,6 +29,8 @@ const createSession = async (userId: string): Promise<string> => {
 const getUserForSession = async (sessionId: string): Promise<User | null> => {
 	const user = db.prepare("SELECT u.* FROM sessions s INNER JOIN users u ON u.uuid = s.userId WHERE s.sessionId = ?")
 		.get(sessionId) as { uuid: string, name: string, role: string };
+	
+	if (!user) return null;
 
 	return {
 		uuid: user.uuid,
