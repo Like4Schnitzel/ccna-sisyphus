@@ -51,10 +51,13 @@
     <p class="error">Unsupported question type</p>
 {:else}
     <div class="question">
-        <h1>
-            <span class="question-id">{question.id}.</span>
-            <span class="question-title">{question.text}</span>
-        </h1>
+        <header>
+            <h1>
+                <span class="question-id">{question.id}.</span>
+                <span class="question-title">{question.text}</span>
+                <span class="quiz-time">0s</span> <!-- TODO timer -->
+            </h1>
+        </header>
         {#if question.type === "mcq"}
             <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
@@ -75,15 +78,17 @@
             Math.ceil(Math.sqrt(Math.ceil(question.staticOptions.length / MAX_MATCH_COLUMNS) % MAX_MATCH_COLUMNS + MAX_MATCH_COLUMNS))
             }">
                 {#each question.staticOptions as option, i (i)}
-                    <div class="match-component-wrapper">
-                        <div class="match-component">
-                            <h2>{option}</h2>
-                            <select bind:value={selectedMovableAnswers[i]}>
-                                <option value={null} selected>Select an answer</option>
-                                {#each question.movableOptions as answer, j (j)}
-                                    <option value={j}>{answer.text}</option>
-                                {/each}
-                            </select>
+                    <div class="match-component-wrapper-wrapper">
+                        <div class="match-component-wrapper">
+                            <div class="match-component">
+                                <h2>{option}</h2>
+                                <select bind:value={selectedMovableAnswers[i]}>
+                                    <option value={null} selected>Select an answer</option>
+                                    {#each question.movableOptions as answer, j (j)}
+                                        <option value={j}>{answer.text}</option>
+                                    {/each}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 {/each}
@@ -122,16 +127,22 @@
         text-align: center;
     }
 
+    .match-component-wrapper-wrapper {
+        width: calc(100% / var(--width-division-match));
+        margin-bottom: calc(20% / var(--width-division-match));
+        align-self: center;
+    }
+
     .match-component-wrapper {
+        padding-left: 5%;
+        padding-right: 5%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-bottom: calc(20% / var(--width-division-match));
-        width: calc(100% / var(--width-division-match));
     }
 
     .match-component {
-        height: fit-content;
+        height: max-content;
         width: fit-content;
         align-self: center;
         background-color: gray;
@@ -144,6 +155,7 @@
 
     .match-component h2 {
         margin-top: 0;
+        height: max-content;
     }
 
     .match-component select {
@@ -155,7 +167,7 @@
         list-style: none;
         flex-grow: 1;
         width: calc(100% / var(--width-division-mcq));
-        outline: 2px solid black;
+        outline: 2px solid black; /* TODO fix weird behavior on hover */
         background-color: var(--initial-mcq-background);
     }
 
@@ -192,21 +204,31 @@
         margin: 0;
     }
 
+    header {
+        border-bottom: 1px solid black;
+    }
+
     h1 {
         display: flex;
         margin-top: 1rem;
         margin-bottom: 1rem;
-        border-bottom: 1px solid black;
+        justify-content: space-between;
+        gap: 1rem;
     }
 
     .question-id {
-        justify-self: left;
-        position: absolute;
-        left: 1rem;
+        flex-grow: 1;
+        margin-left: 1rem;
+    }
+
+    .quiz-time {
+        flex-grow: 1;
+        margin-right: 1rem;
+        text-align: right;
     }
 
     .question-title {
-        flex-grow: 1;
+        flex-grow: 2;
         text-align: center;
     }
 
