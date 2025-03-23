@@ -2,6 +2,8 @@
     import type { Question, QuestionDTO } from "./types";
     export let questionDTO: QuestionDTO;
 
+    const MAX_MATCH_COLUMNS = 4
+
     let question: Question | null;
     if (questionDTO.type === "mcq") {
         question = {
@@ -54,7 +56,7 @@
             <span class="question-title">{question.text}</span>
         </h1>
         {#if question.type === "mcq"}
-            <ul class="mcq" style="--width-division: {Math.ceil(Math.sqrt(question.answers.length))}">
+            <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
                     <li>
                         <label for={i.toString()}>
@@ -69,16 +71,20 @@
                 {/each}
             </ul>
         {:else if question.type === "match"}
-            <div class="horizontal">
+            <div class="match" style="--width-division-match: {
+            Math.ceil(Math.sqrt(Math.ceil(question.staticOptions.length / MAX_MATCH_COLUMNS) % MAX_MATCH_COLUMNS + MAX_MATCH_COLUMNS))
+            }">
                 {#each question.staticOptions as option, i (i)}
-                    <div>
-                        <h2>{option}</h2>
-                        <select bind:value={selectedMovableAnswers[i]}>
-                            <option value={null} selected>Select an answer</option>
-                            {#each question.movableOptions as answer, j (j)}
-                                <option value={j}>{answer.text}</option>
-                            {/each}
-                        </select>
+                    <div class="match-component-wrapper">
+                        <div class="match-component">
+                            <h2>{option}</h2>
+                            <select bind:value={selectedMovableAnswers[i]}>
+                                <option value={null} selected>Select an answer</option>
+                                {#each question.movableOptions as answer, j (j)}
+                                    <option value={j}>{answer.text}</option>
+                                {/each}
+                            </select>
+                        </div>
                     </div>
                 {/each}
             </div>
@@ -96,18 +102,13 @@
         --selected-mcq-background: lightskyblue;
     }
 
-    .horizontal {
-        display: flex;
-        gap: 2rem;
-    }
-
     .question {
         height: 100%;
         display: flex;
         flex-direction: column;
     }
 
-    .mcq {
+    .mcq, .match {
         flex-grow: 1;
         display: flex;
         flex-flow: row wrap;
@@ -116,10 +117,44 @@
         justify-content: center;
     }
 
+    .match {
+        justify-content: space-evenly;
+        text-align: center;
+    }
+
+    .match-component-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: calc(20% / var(--width-division-match));
+        width: calc(100% / var(--width-division-match));
+    }
+
+    .match-component {
+        height: fit-content;
+        width: fit-content;
+        align-self: center;
+        background-color: gray;
+        border-radius: 5px;
+        padding: 1rem;
+        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .match-component h2 {
+        margin-top: 0;
+    }
+
+    .match-component select {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
     .mcq li {
         list-style: none;
         flex-grow: 1;
-        width: calc(100% / var(--width-division));
+        width: calc(100% / var(--width-division-mcq));
         outline: 2px solid black;
         background-color: var(--initial-mcq-background);
     }
@@ -159,11 +194,9 @@
 
     h1 {
         display: flex;
-    }
-
-    h1 {
         margin-top: 1rem;
         margin-bottom: 1rem;
+        border-bottom: 1px solid black;
     }
 
     .question-id {
