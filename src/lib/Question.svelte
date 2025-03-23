@@ -52,7 +52,7 @@
         <h1>{question.id}. {question.text}</h1>
         {#if question.type === "mcq"}
             <ul>
-                {#each question.answers as answer, i}
+                {#each question.answers as answer, i (i)}
                     <li>
                         {#if correctAnswersAmount === 1}
                             <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
@@ -65,13 +65,13 @@
             </ul>
         {:else if question.type === "match"}
             <div class="horizontal">
-                {#each question.staticOptions as option, i}
+                {#each question.staticOptions as option, i (i)}
                     <div>
                         <h2>{option}</h2>
                         <select bind:value={selectedMovableAnswers[i]}>
                             <option value={null} selected>Select an answer</option>
-                            {#each question.movableOptions as answer}
-                                <option value={i}>{answer.text}</option>
+                            {#each question.movableOptions as answer, j (j)}
+                                <option value={j}>{answer.text}</option>
                             {/each}
                         </select>
                     </div>
