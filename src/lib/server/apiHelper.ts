@@ -19,7 +19,7 @@ const needAuth = (cb: RequestHandler): RequestHandler => {
 	}
 }
 
-const withValidatedInput = <T extends Type, G extends RequestHandler>(typeToUse: T, cb: AddParam<G, [data: T['infer']]>): RequestHandler => {
+const withValidatedInput = <T extends Type, G extends RequestHandler>(typeToUse: T, cb: AddParam<G, T['infer']>): RequestHandler => {
 	return async (...args) => {
 		const { request } = args[0];
 		
