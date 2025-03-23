@@ -4,6 +4,62 @@
 
     const MAX_MATCH_COLUMNS = 4
 
+    let submissionCorrect: boolean | null = null;
+    let submitted = false;
+    let submitText = "Submit";
+    let submitClass = "";
+    let inputClasses: ("correct"|"incorrect"|"")[] = [];
+    let submitButton: HTMLButtonElement;
+    let mcqInputs: HTMLInputElement[] = [];
+    async function submitQuestion() {
+        if (submitted || !question) return;
+
+        if (question.type === "mcq") {
+            if (selectedAnswer === null) {
+                console.error("selectedAnswer is null");
+                return;
+            }
+
+            let payload: number[];
+            if (!(selectedAnswer instanceof Array)) {
+                payload = [selectedAnswer];
+            } else {
+                payload = selectedAnswer;
+            }
+
+            submitted = true;
+            submitButton.disabled = true;
+
+            const response = await fetch(`/api/answers/${question.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+            const responseContent = await response.json();
+            submissionCorrect = responseContent.correct;
+
+            if (submissionCorrect) {
+                submitClass = "correct";
+                submitText = "Correct!";
+            } else {
+                submitClass = "incorrect";
+                submitText = "Incorrect";
+            }
+
+            for (let i = 0; i < question.answers.length; i++) {
+                mcqInputs[i].disabled = true;
+                if (question.answers[i].correct) {
+                    inputClasses[i] = "correct";
+                } else {
+                    inputClasses[i] = "incorrect";
+                }
+            }
+            inputClasses = inputClasses;
+        }
+    }
+
     let question: Question | null;
     if (questionDTO.type === "mcq") {
         question = {
@@ -24,6 +80,12 @@
     } else {
         question = null;
         console.error("Question type not implemented:", questionDTO);
+    }
+
+    if (question?.type === "mcq") {
+        inputClasses = question.answers.map(() => "");
+    } else if (question?.type === "match") {
+        inputClasses = question.staticOptions.map(() => "");
     }
 
     const correctAnswersAmount: number | null = question?.type == "mcq" ? question?.answers.filter((a) => a.correct).length : null;
@@ -61,13 +123,13 @@
         {#if question.type === "mcq"}
             <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
-                    <li>
+                    <li class={inputClasses[i]}>
                         <label for={i.toString()}>
                             <p>{answer.text}</p>
                             {#if correctAnswersAmount === 1}
-                                <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                                <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {:else}
-                                <input type="checkbox" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                                <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {/if}
                         </label>
                     </li>
@@ -95,7 +157,7 @@
             </div>
         {/if}
         <div class="submit">
-            <button>Submit</button> <!-- TODO submission logic -->
+            <button bind:this={submitButton} class={submitClass} on:click={submitQuestion}>{submitText}</button>
         </div>
     </div>
 {/if}
@@ -105,6 +167,22 @@
         --initial-mcq-background: white;
         --hovered-mcq-background: rgba(135, 206, 250, 0.321);
         --selected-mcq-background: lightskyblue;
+    }
+
+    button.correct {
+        color: lime;
+    }
+
+    button.incorrect {
+        color: red;
+    }
+
+    li.correct {
+        background-color: lightgreen !important;
+    }
+
+    li.incorrect {
+        background-color: lightcoral !important;
     }
 
     .question {
@@ -129,7 +207,6 @@
 
     .match-component-wrapper-wrapper {
         width: calc(100% / var(--width-division-match));
-        margin-bottom: calc(20% / var(--width-division-match));
         align-self: center;
     }
 
@@ -238,6 +315,7 @@
         width: 100%;
         height: 100%;
         border: 0;
+        font-size: x-large;
         font-weight: bold;
         border-top: 1px solid black;
     }
