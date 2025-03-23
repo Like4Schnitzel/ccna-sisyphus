@@ -1,4 +1,7 @@
 <script lang="ts">
     import Question from "$lib/Question.svelte";
-    import { questions } from "$lib/components";
+
+    let { data } = $props();
 </script>
+
+<Question questionDTO={data} />
