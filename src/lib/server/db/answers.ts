@@ -99,8 +99,8 @@ const validateQuestionCorrect = (question: QuestionDTO, choices: number[]): bool
  * @returns object with key being questionId and the value being answerIdx
  */
 const getAllAnswersForAllQuestions = (userId: string) => {
-	const answersResult = db.prepare("SELECT questionId, answerId as answerIdx FROM answer_choices WHERE userId = ?")
-		.all(userId) as { questionId: number, answerIdx: number }[];
+	const answersResult = db.prepare("SELECT questionId, answerId FROM answer_choices WHERE userId = ?")
+		.all(userId) as { questionId: number, answerId: number }[];
 	
 	// map data a bit better imo
 	// might be a bit slow with a lot of answers
@@ -109,7 +109,7 @@ const getAllAnswersForAllQuestions = (userId: string) => {
 
 	for (const result of answersResult) {
 		answers[result.questionId] ??= [];
-		answers[result.questionId].push(result.answerIdx);
+		answers[result.questionId].push(result.answerId);
 	}
 
 	return answers;
