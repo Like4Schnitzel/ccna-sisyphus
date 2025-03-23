@@ -1,7 +1,7 @@
 import { getUserForLogin } from "$lib/server/db/users";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
-import { createSession, SESSION_COOKIE_NAME } from "$lib/server/db/sessions";
+import { createSession, SESSION_COOKIE_NAME, SESSION_EXPIRY } from "$lib/server/db/sessions";
 import { type } from "arktype";
 
 const loginPayload = type({
@@ -31,7 +31,7 @@ export const actions: Actions = {
 		const sessionId = await createSession(user.uuid);
 		cookies.set(SESSION_COOKIE_NAME, sessionId, {
 			path: "/",
-			expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+			expires: new Date(Date.now() + SESSION_EXPIRY)
 		});
 
 		throw redirect(303, "/");

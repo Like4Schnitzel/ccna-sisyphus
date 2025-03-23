@@ -3,6 +3,7 @@ import crypto from 'node:crypto';
 import type { User } from "./users";
 
 const SESSION_COOKIE_NAME = "session";
+const SESSION_EXPIRY = 30 * 24 * 60 * 60 * 1000;
 
 const generateSessionId = () => {
 	return crypto.randomBytes(64).toString("hex");
@@ -27,10 +28,19 @@ const createSession = async (userId: string): Promise<string> => {
  * @returns the user the session belongs to
  */
 const getUserForSession = async (sessionId: string): Promise<User | null> => {
-	const user = db.prepare("SELECT u.* FROM sessions s INNER JOIN users u ON u.uuid = s.userId WHERE s.sessionId = ?")
-		.get(sessionId) as { uuid: string, name: string, role: string };
+	const user = db.prepare("SELECT u.*, s.creation FROM sessions s INNER JOIN users u ON u.uuid = s.userId WHERE s.sessionId = ?")
+		.get(sessionId) as { uuid: string, name: string, role: string, creation: string };
 	
 	if (!user) return null;
+	
+	// check if session expired
+	if (Date.now() > new Date(user.creation).getTime() + SESSION_EXPIRY) {
+		// remove the session from the database
+		// there should also probably be a cleanup job that does this
+		db.prepare("DELETE FROM sessions WHERE sessionId = ?").run(sessionId);
+
+		return null;
+	}
 
 	return {
 		uuid: user.uuid,
@@ -51,4 +61,4 @@ const deleteSession = async (sessionId: string): Promise<boolean> => {
 	return result.changes != 0;
 }
 
-export { createSession, getUserForSession, deleteSession, SESSION_COOKIE_NAME };
+export { createSession, getUserForSession, deleteSession, SESSION_COOKIE_NAME, SESSION_EXPIRY };

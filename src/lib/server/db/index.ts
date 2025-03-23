@@ -15,6 +15,7 @@ const prepareDb = async () => {	// todo(f): think about this db structure a bit 
 	db.exec(`CREATE TABLE IF NOT EXISTS sessions (
 		sessionId TEXT NOT NULL,
 		userId TEXT NOT NULL,
+		creation TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 		PRIMARY KEY (sessionId),
 		FOREIGN KEY (userId) REFERENCES users(uuid)
