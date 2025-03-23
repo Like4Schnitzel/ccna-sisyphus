@@ -1,3 +1,5 @@
+import { questions } from "$lib/components";
+import type { QuestionDTO } from "$lib/types";
 import db from ".";
 
 /**
@@ -7,10 +9,17 @@ import db from ".";
  * @returns all answer indexes to that question
  */
 const getChosenAnswersForQuestion = (userId: string, questionId: number) => {
-	const answers = db.prepare("SELECT answerId as answerIndex FROM answer_to_answers WHERE userId = ? AND questionId = ?")
+	const answers = db.prepare("SELECT answerId as answerIndex FROM answer_choices WHERE userId = ? AND questionId = ?")
 		.all(userId, questionId) as { answerIndex: number }[];
 	
 	return answers.map(a => a.answerIndex);
+}
+
+const wasAnswerToQuestionCorrect = (userId: string, questionId: number) => {
+	const wasCorrect = db.prepare("SELECT isCorrect FROM answers WHERE userId = ? AND questionId = ?")
+		.get(userId, questionId) as { isCorrect: boolean };
+	
+	return !!wasCorrect?.isCorrect;
 }
 
 /**
@@ -20,15 +29,66 @@ const getChosenAnswersForQuestion = (userId: string, questionId: number) => {
  * @param questionId what question these answers are for
  * @param answerIndices the answer indices 
  */
-const putAnswersForQuestions = (userId: string, questionId: number, answerIndices: number[]) => {
+const putChosenChoicesForQuestions = (userId: string, questionId: number, answerIndices: number[]) => {
 	// we would firstly have to delete the old answers to the question and insert the new ones
 	db.transaction(() => {
-		db.prepare("DELETE FROM answer_to_answers WHERE userId = ? AND questionId = ?").run(userId, questionId);
+		db.prepare("DELETE FROM answer_choices WHERE userId = ? AND questionId = ?").run(userId, questionId);
 		for (const index of answerIndices) {
-			db.prepare("INSERT INTO answer_to_answers(userId, questionId, answerId) VALUES (?, ?, ?)")
+			db.prepare("INSERT INTO answer_choices(userId, questionId, answerId) VALUES (?, ?, ?)")
 				.run(userId, questionId, index);
 		}
 	})();
+}
+
+/**
+ * Inserts a answer for a question into the database
+ * @param userId the user the answer belongs to
+ * @param questionId the question the answer belongs to
+ * @param choices indices of choices that were picked
+ * @returns if the answer was correct or not
+ */
+const putAnswerForQuestion = (userId: string, questionId: number, choices: number[]): boolean => {
+	const question = questions.find(q => q.id == questionId);
+	if (!question) {
+		throw new Error("Couldn't find question with id " + questionId);
+	}
+
+	putChosenChoicesForQuestions(userId, questionId, choices);
+
+	const isCorrect = validateQuestionCorrect(question, choices);
+	
+
+	db.prepare("INSERT INTO answers (questionId, userId, isCorrect) VALUES (?, ?, ?) ON CONFLICT DO UPDATE SET isCorrect = excluded.isCorrect")
+		.run([questionId, userId, isCorrect ? 1 : 0]);
+	
+	return isCorrect;
+}
+
+// todo(f): this should probably not be right here
+const validateQuestionCorrect = (question: QuestionDTO, choices: number[]): boolean => {
+	switch (question.type) {
+		case "match": {
+			return question.movableOptions
+				.every((option, index) => option.correctMatch == question.staticOptions[choices[index]]);
+		}
+
+		case "mcq": {
+			for (let i = 0; i < question.answers.length; i++) {
+				const answer = question.answers[i];
+				if (!answer.correct && choices.includes(i)) {
+					return false;
+				} else if (answer.correct && !choices.includes(i)) {
+					return false;
+				}
+			};
+
+			return true;
+		}
+
+		default: {
+			throw new Error("Unimplemented validation for " + question);
+		}
+	}
 }
 
 /**
@@ -39,7 +99,7 @@ const putAnswersForQuestions = (userId: string, questionId: number, answerIndice
  * @returns object with key being questionId and the value being answerIdx
  */
 const getAllAnswersForAllQuestions = (userId: string) => {
-	const answersResult = db.prepare("SELECT questionId, answerId as answerIdx FROM answer_to_answers WHERE userId = ?")
+	const answersResult = db.prepare("SELECT questionId, answerId as answerIdx FROM answer_choices WHERE userId = ?")
 		.all(userId) as { questionId: number, answerIdx: number }[];
 	
 	// map data a bit better imo
@@ -55,4 +115,4 @@ const getAllAnswersForAllQuestions = (userId: string) => {
 	return answers;
 }
 
-export { getChosenAnswersForQuestion, putAnswersForQuestions, getAllAnswersForAllQuestions };
+export { getChosenAnswersForQuestion, getAllAnswersForAllQuestions, putAnswerForQuestion, wasAnswerToQuestionCorrect };
