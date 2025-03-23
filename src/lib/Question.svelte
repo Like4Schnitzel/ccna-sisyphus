@@ -48,10 +48,10 @@
 {#if question === null}
     <p class="error">Unsupported question type</p>
 {:else}
-    <div>
+    <div class="question">
         <h1>{question.id}. {question.text}</h1>
         {#if question.type === "mcq"}
-            <ul>
+            <ul class="mcq" style="--width-division: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
                     <li>
                         {#if correctAnswersAmount === 1}
@@ -88,5 +88,31 @@
     .horizontal {
         display: flex;
         gap: 2rem;
+    }
+
+    .question {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mcq {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .mcq li {
+        list-style: none;
+        flex-grow: 1;
+        width: calc(100% / var(--width-division));
+        outline: 2px solid black;
+    }
+
+    h1 {
+        margin: 0;
     }
 </style>
