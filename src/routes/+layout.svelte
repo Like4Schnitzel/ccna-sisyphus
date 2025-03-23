@@ -11,6 +11,11 @@
 <div class="main">
     <header>
         <h1>Quiz App</h1>
+        {#if data.userData}
+            <a href="/logout">{data.userData.username}</a>
+        {:else}
+            <a href="/login">login</a>
+        {/if}
     </header>
     <div class="content">
         {@render children()}
@@ -42,6 +47,9 @@
     header, footer {
         background-color: #111;
         color: azure;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .content {
@@ -50,5 +58,9 @@
 
     h1 {
         margin: 0;
+    }
+
+    footer, a:any-link {
+        color: #c0ddff;
     }
 </style>
