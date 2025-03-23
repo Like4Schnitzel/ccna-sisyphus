@@ -1,12 +1,48 @@
 <script lang="ts">
-    import type { User } from '$lib/server/db/users';
-    import { getContext } from 'svelte';
+    import type { QuestionDTO as QuestionType } from "$lib/types";
+    import Question from "$lib/Question.svelte";
 
-	const user = getContext<User | null>("userData");
+    let q: QuestionType[] = [
+        {
+            id: 1,
+            text: "Wer ist eigentlich Gubi Fortnite?",
+            type: "match",
+            staticOptions: [
+                "Gubi", "Niek"
+            ],
+            movableOptions: 
+            [
+                {
+                    text: "Beats",
+                    correctMatch: "Niek"
+                },
+                {
+                    text: "Fortnite",
+                    correctMatch: "Gubi"
+                }
+            ]
+        },
+        {
+            id: 2,
+            text: "Was ist eigentlich opsec?",
+            type: "mcq",
+            answers: [
+                {
+                    text: "One Piece",
+                    correct: false
+                },
+                {
+                    text: "Operation Security",
+                    correct: true
+                },
+                {
+                    text: "Overpowered Security",
+                    correct: false
+                }
+            ]
+        }
+    ]
 </script>
 
-{#if user}
-	yo {user.username}
-{:else}
-	you're not logged in!
-{/if}
+<Question questionDTO={q[0]} />
+<Question questionDTO={q[1]} />
