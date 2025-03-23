@@ -2,17 +2,26 @@ import { getUserForLogin } from "$lib/server/db/users";
 import { fail, redirect } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 import { createSession, SESSION_COOKIE_NAME } from "$lib/server/db/sessions";
+import { type } from "arktype";
+
+const loginPayload = type({
+	"username": "string",
+	"password": "string"
+});
 
 export const actions: Actions = {
 	default: async ({ request, cookies }) => {
-		const data = await request.formData();
-		
-		// TODO(f): validate these inputs
-		const username = data.get("username");
-		const password = data.get("password");
-		console.log(username, password);
+		const formData = await request.formData();
+		const data = Object.fromEntries(formData.entries());
 
-		const user = await getUserForLogin(username as string, password as string);
+		const validationResult = loginPayload(data);
+		if (validationResult instanceof type.errors) {
+			return fail(400, {
+				"error": validationResult.summary
+			});
+		}
+
+		const user = await getUserForLogin(validationResult.username, validationResult.password);
 		if (!user) {
 			return fail(401, {
 				error: "Invalid username or password"

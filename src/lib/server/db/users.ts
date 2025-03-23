@@ -31,9 +31,6 @@ const createUser = async (username: string, password: string, role: UserRole): P
 };
 
 const getUserForLogin = async (username: string, password: string): Promise<User | null> => {
-	const hashedPassword = await hashPassword(password);
-	console.log(username, hashedPassword);
-
 	const user = db.prepare("SELECT * FROM users WHERE name = ?")
 		.get(username) as { uuid: string, name: string, password: string, role: string };
 
