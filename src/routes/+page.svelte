@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { questions } from "$lib/components";
 
     let searchValue = $state("");
@@ -6,6 +7,12 @@
 </script>
 
 <main>
+    <button class="start-first" onclick={() => goto("/questions/1")}>
+        start training
+    </button>
+
+    <hr>
+    
     <input type="text" class="search" bind:value={searchValue} placeholder="search...">
 
     <details open>
@@ -27,13 +34,23 @@
         margin: 0 auto;
     }
 
+    .start-first {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 8rem;
+        font-size: 2em;
+    }
+
     .search {
         width: calc(100% - 1em);
         padding: 0.33em;
+        margin: 0 auto;
         margin-bottom: 0.25em;
     }
 
     .question-list {
+        padding-top: 0.3em;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 0.25rem;
