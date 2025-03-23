@@ -54,12 +54,14 @@
             <ul class="mcq" style="--width-division: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
                     <li>
-                        {#if correctAnswersAmount === 1}
-                            <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
-                        {:else}
-                            <input type="checkbox" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
-                        {/if}
-                        <label for={i.toString()}>{answer.text}</label>
+                        <label for={i.toString()}>
+                            <p>{answer.text}</p>
+                            {#if correctAnswersAmount === 1}
+                                <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                            {:else}
+                                <input type="checkbox" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                            {/if}
+                        </label>
                     </li>
                 {/each}
             </ul>
@@ -85,6 +87,12 @@
 {/if}
 
 <style>
+    :root {
+        --initial-mcq-background: white;
+        --hovered-mcq-background: rgba(135, 206, 250, 0.321);
+        --selected-mcq-background: lightskyblue;
+    }
+
     .horizontal {
         display: flex;
         gap: 2rem;
@@ -110,6 +118,40 @@
         flex-grow: 1;
         width: calc(100% / var(--width-division));
         outline: 2px solid black;
+        background-color: var(--initial-mcq-background);
+    }
+
+    .mcq li:hover {
+        background-color: var(--hovered-mcq-background);
+    }
+
+    .mcq li:has(input:checked) {
+        background-color: var(--selected-mcq-background);
+    }
+
+    .mcq li label {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .mcq li label p {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        font-weight: bold;
+        font-size: larger;
+        text-align: center;
+    }
+
+    .mcq li label input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        margin: 0;
     }
 
     h1 {
