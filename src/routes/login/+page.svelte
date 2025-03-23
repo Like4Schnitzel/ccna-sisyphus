@@ -8,8 +8,9 @@
 	<p>{form.error}</p>
 {/if}
 
-<form use:enhance method="POST">
+<form use:enhance method="POST" action="?/login">
 	<input type="text" name="username" placeholder="username">
 	<input type="password" name="password" placeholder="password">
-	<button>submit</button>
+	<button>login</button>
+	<button formaction="?/register">register</button>
 </form>
