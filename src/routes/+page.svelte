@@ -2,20 +2,47 @@
     import type { QuestionDTO as QuestionType } from "$lib/types";
     import Question from "$lib/Question.svelte";
 
-    let q: QuestionType = {
-        id: 1,
-        text: "Was ist eigentlich opsec?",
-        type: "mcq",
-        answers: [
-            { text: "Operation Security", correct: false },
-            { text: "Operational Security", correct: true },
-            { text: "Operative Security", correct: false },
-            { text: "Operational Secrecy", correct: true},
-        ],
-    }
+    let q: QuestionType[] = [
+        {
+            id: 1,
+            text: "Wer ist eigentlich Gubi Fortnite?",
+            type: "match",
+            staticOptions: [
+                "Gubi", "Niek"
+            ],
+            movableOptions: 
+            [
+                {
+                    text: "Beats",
+                    correctMatch: "Niek"
+                },
+                {
+                    text: "Fortnite",
+                    correctMatch: "Gubi"
+                }
+            ]
+        },
+        {
+            id: 2,
+            text: "Was ist eigentlich opsec?",
+            type: "mcq",
+            answers: [
+                {
+                    text: "One Piece",
+                    correct: false
+                },
+                {
+                    text: "Operation Security",
+                    correct: true
+                },
+                {
+                    text: "Overpowered Security",
+                    correct: false
+                }
+            ]
+        }
+    ]
 </script>
 
-<Question questionDTO={q} />
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<Question questionDTO={q[0]} />
+<Question questionDTO={q[1]} />

@@ -41,9 +41,9 @@
             }
         }
     }
-</script>
 
-<button on:click={() => console.log(question)}>Log question</button>
+    const selectedMovableAnswers: (number | null)[] = [];
+</script>
 
 {#if question === null}
     <p class="error">Unsupported question type</p>
@@ -64,7 +64,32 @@
                 {/each}
             </ul>
         {:else if question.type === "match"}
-            <p>Unimplemented</p> <!-- TODO -->
+            <div class="horizontal">
+                {#each question.staticOptions as option, i}
+                    <div>
+                        <h2>{option}</h2>
+                        <select bind:value={selectedMovableAnswers[i]}>
+                            <option value={null} selected>Select an answer</option>
+                            {#each question.movableOptions as answer}
+                                <option value={i}>{answer.text}</option>
+                            {/each}
+                        </select>
+                    </div>
+                {/each}
+            </div>
         {/if}
+        <div>
+            <button>Submit</button> <!-- TODO submission logic -->
+        </div>
     </div>
 {/if}
+
+<style>
+    /* TODO */
+    /* .error global */
+
+    .horizontal {
+        display: flex;
+        gap: 2rem;
+    }
+</style>
