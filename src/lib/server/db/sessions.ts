@@ -39,4 +39,16 @@ const getUserForSession = async (sessionId: string): Promise<User | null> => {
 	} as User;
 }
 
-export { createSession, getUserForSession, SESSION_COOKIE_NAME };
+/**
+ * Deletes a session by session id
+ * @param sessionId session id to be deleted
+ * @returns if a session was deleted or not
+ */
+const deleteSession = async (sessionId: string): Promise<boolean> => {
+	const result = db.prepare("DELETE FROM sessions WHERE sessionId = ?")
+		.run(sessionId);
+	
+	return result.changes != 0;
+}
+
+export { createSession, getUserForSession, deleteSession, SESSION_COOKIE_NAME };
