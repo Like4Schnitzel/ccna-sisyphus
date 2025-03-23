@@ -85,9 +85,6 @@
 {/if}
 
 <style>
-    /* TODO */
-    /* .error global */
-
     .horizontal {
         display: flex;
         gap: 2rem;
