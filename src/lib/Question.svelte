@@ -49,7 +49,10 @@
     <p class="error">Unsupported question type</p>
 {:else}
     <div class="question">
-        <h1>{question.id}. {question.text}</h1>
+        <h1>
+            <span class="question-id">{question.id}.</span>
+            <span class="question-title">{question.text}</span>
+        </h1>
         {#if question.type === "mcq"}
             <ul class="mcq" style="--width-division: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
@@ -80,7 +83,7 @@
                 {/each}
             </div>
         {/if}
-        <div>
+        <div class="submit">
             <button>Submit</button> <!-- TODO submission logic -->
         </div>
     </div>
@@ -155,6 +158,32 @@
     }
 
     h1 {
-        margin: 0;
+        display: flex;
+    }
+
+    h1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .question-id {
+        justify-self: left;
+        position: absolute;
+        left: 1rem;
+    }
+
+    .question-title {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .submit button {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        font-weight: bold;
+        border-top: 1px solid black;
     }
 </style>
