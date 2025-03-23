@@ -2,7 +2,9 @@ import { json, type RequestHandler } from "@sveltejs/kit";
 import type { Type } from "arktype";
 import { type } from "arktype";
 
-type AddParametersToFunction<F extends Function, P extends unknown[]> = F extends (...a: infer FP) => infer R ? (((...a:[...FP, ...P]) => R) & Pick<F, keyof F>): never;
+type AddParam<F, U> = F extends (...args: infer A) => infer R 
+  ? (...args: [...A, U]) => R 
+  : never;
 
 const needAuth = (cb: RequestHandler): RequestHandler => {
 	return (...args) => {
@@ -17,7 +19,7 @@ const needAuth = (cb: RequestHandler): RequestHandler => {
 	}
 }
 
-const withValidatedInput = <T extends Type<any>, G extends RequestHandler>(typeToUse: T, cb: AddParametersToFunction<G, [data: T['infer']]>): RequestHandler => {
+const withValidatedInput = <T extends Type, G extends RequestHandler>(typeToUse: T, cb: AddParam<G, [data: T['infer']]>): RequestHandler => {
 	return async (...args) => {
 		const { request } = args[0];
 		
