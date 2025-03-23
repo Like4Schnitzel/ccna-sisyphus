@@ -115,4 +115,4 @@ const getAllAnswersForAllQuestions = (userId: string) => {
 	return answers;
 }
 
-export { getChosenAnswersForQuestion, getAllAnswersForAllQuestions, putAnswerForQuestion, wasAnswerToQuestionCorrect };
+export { getChosenAnswersForQuestion, getAllAnswersForAllQuestions, putAnswerForQuestion, wasAnswerToQuestionCorrect, validateQuestionCorrect };
