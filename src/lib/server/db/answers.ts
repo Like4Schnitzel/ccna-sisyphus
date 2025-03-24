@@ -115,4 +115,18 @@ const getAllAnswersForAllQuestions = (userId: string) => {
 	return answers;
 }
 
-export { getChosenAnswersForQuestion, getAllAnswersForAllQuestions, putAnswerForQuestion, wasAnswerToQuestionCorrect, validateQuestionCorrect };
+const getIncorrectAnswers = (userId: string) => {
+	const incorrectAnswersResult = db.prepare("SELECT questionId, isCorrect FROM answers WHERE userId = ? AND isCorrect = false")
+		.all(userId) as { questionId: string, isCorrect: boolean }[];
+
+	return incorrectAnswersResult.map(row => row.questionId);
+}
+
+export { 
+	getChosenAnswersForQuestion, 
+	getAllAnswersForAllQuestions, 
+	putAnswerForQuestion, 
+	wasAnswerToQuestionCorrect, 
+	validateQuestionCorrect, 
+	getIncorrectAnswers 
+};
