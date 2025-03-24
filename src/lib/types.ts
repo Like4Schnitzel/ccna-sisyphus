@@ -13,11 +13,11 @@ type MCQQuestionDTO = QuestionBase & {
 
 type MatchQuestionDTO = QuestionBase & {
     type: "match",
-    staticOptions: string[],
-    movableOptions: {
-        text: string,
-        correctMatch: MatchQuestionDTO["staticOptions"][number]
-    }[]
+    staticOptions: {
+        text: string
+        correctMatch: MatchQuestionDTO["movableOptions"][number] | null
+    }[],
+    movableOptions: string[]
 }
 
 type MCQQuestion = MCQQuestionDTO & {
@@ -27,8 +27,8 @@ type MCQQuestion = MCQQuestionDTO & {
 }
 
 type MatchQuestion = MatchQuestionDTO & {
-    movableOptions: {
-        matchedTo: MatchQuestionDTO["staticOptions"][number] | null
+    staticOptions: {
+        matchedTo: MatchQuestionDTO["movableOptions"][number] | null
     }[]
 }
 

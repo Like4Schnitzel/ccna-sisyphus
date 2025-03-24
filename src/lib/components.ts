@@ -144,29 +144,32 @@ export const questions: QuestionDTO[] = [
         "text": "Match the descriptions to the terms. (Not all options are used.)",
         "type": "match",
         "staticOptions": [
-            "Telnet",
-            "CLI",
-            "GUI",
-            "kernel",
-            "shell"
+            {
+                text: "Telnet",
+                correctMatch: null
+            },
+            {
+                text: "CLI",
+                correctMatch: "users interact with the operating system by typing commands",
+            },
+            {
+                text: "GUI",
+                correctMatch: "enables the user to interact with the operating system by pointing and clicking",
+            },
+            {
+                text: "kernel",
+                correctMatch: "the part of the OS that interacts directly with the device hardware"
+            },
+            {
+                text: "shell",
+                correctMatch: "the part of the operating system that interfaces with applications and the user"
+            }
         ],
         "movableOptions": [
-            {
-                "text": "enables the user to interact with the operating system by pointing and clicking",
-                "correctMatch": "GUI"
-            },
-            {
-                "text": "the part of the operating system that interfaces with applications and the user",
-                "correctMatch": "shell"
-            },
-            {
-                "text": "the part of the OS that interacts directly with the device hardware",
-                "correctMatch": "kernel"
-            },
-            {
-                "text": "users interact with the operating system by typing commands",
-                "correctMatch": "CLI"
-            }
+            "enables the user to interact with the operating system by pointing and clicking",
+            "the part of the operating system that interfaces with applications and the user",
+            "the part of the OS that interacts directly with the device hardware",
+            "users interact with the operating system by typing commands"
         ]
     },
     {
@@ -455,33 +458,33 @@ export const questions: QuestionDTO[] = [
         "text": "Match the command with the device mode at which the command is entered. (Not all options are used.)",
         "type": "match",
         "staticOptions": [
-            "R1(config-line)#",
-            "R1(config-if)#",
-            "R1(config)#",
-            "R1>",
-            "R1#"
+            {
+                text: "R1(config-line)#",
+                correctMatch: "login"
+            },
+            {
+                text: "R1(config-if)#",
+                correctMatch: "ip address 192.168.4.4 255.255.255.0"
+            },
+            {
+                text: "R1(config)#",
+                correctMatch: "service password-encryption"
+            },
+            {
+                text: "R1>",
+                correctMatch: "enable"
+            },
+            {
+                text: "R1#",
+                correctMatch: "config running-config startup-config"
+            }
         ],
         "movableOptions": [
-            {
-                "text": "login",
-                "correctMatch": "R1(config-line)#"
-            },
-            {
-                "text": "service password-encryption",
-                "correctMatch": "R1(config)#"
-            },
-            {
-                "text": "ip address 192.168.4.4 255.255.255.0",
-                "correctMatch": "R1(config-if)#"
-            },
-            {
-                "text": "config running-config startup-config",
-                "correctMatch": "R1#"
-            },
-            {
-                "text": "enable",
-                "correctMatch": "R1>"
-            }
+            "login",
+            "service password-encryption",
+            "ip address 192.168.4.4 255.255.255.0",
+            "config running-config startup-config",
+            "enable",
         ]
     },
     {
@@ -866,43 +869,58 @@ export const questions: QuestionDTO[] = [
         "text": "Three devices are on three different subnets. Match the network address and the broadcast address with each subnet where these devices are located. (Not all options are used.)",
         "type": "match",
         "staticOptions": [
-            "192.168.10.64",
-            "192.168.10.95",
-            "192.168.10.19",
-            "192.168.10.32",
-            "192.168.10.47",
-            "192.168.10.48",
-            "192.168.10.0",
-            "192.168.10.79",
-            "192.168.10.255",
-            "192.168.10.16",
-            "192.168.10.39"
+            {
+                text: "192.168.10.64",
+                correctMatch: "Subnet 1 network number"
+            },
+            {
+                text: "192.168.10.95",
+                correctMatch: null
+            },
+            {
+                text: "192.168.10.19",
+                correctMatch: "Subnet 2 broadcast address"
+            },
+            {
+                text: "192.168.10.32",
+                correctMatch: "Subnet 3 network number"
+            },
+            {
+                text: "192.168.10.47",
+                correctMatch: null
+            },
+            {
+                text: "192.168.10.48",
+                correctMatch: null
+            },
+            {
+                text: "192.168.10.0",
+                correctMatch: null
+            },
+            {
+                text: "192.168.10.79",
+                correctMatch: "Subnet 1 broadcast address"
+            },
+            {
+                text: "192.168.10.255",
+                correctMatch: null
+            },
+            {
+                text: "192.168.10.16",
+                correctMatch: "Subnet 2 network number"
+            },
+            {
+                text: "192.168.10.39",
+                correctMatch: "Subnet 3 broadcast address"
+            }
         ],
         "movableOptions": [
-            {
-                "text": "Subnet 1 network number",
-                "correctMatch": "192.168.10.64"
-            },
-            {
-                "text": "Subnet 2 broadcast address",
-                "correctMatch": "192.168.10.19"
-            },
-            {
-                "text": "Subnet 3 network number",
-                "correctMatch": "192.168.10.32"
-            },
-            {
-                "text": "Subnet 1 broadcast address",
-                "correctMatch": "192.168.10.79"
-            },
-            {
-                "text": "Subnet 2 network number",
-                "correctMatch": "192.168.10.16",
-            },
-            {
-                "text": "Subnet 3 broadcast address",
-                "correctMatch": "192.168.10.39"
-            }
+            "Subnet 1 network number",
+            "Subnet 2 broadcast address",
+            "Subnet 3 network number",
+            "Subnet 1 broadcast address",
+            "Subnet 2 network number",
+            "Subnet 3 broadcast address"
         ]
     },
     {
@@ -1444,29 +1462,32 @@ export const questions: QuestionDTO[] = [
         "text": "Match the description with the media. (Not all options are used.)",
         "type": "match",
         "staticOptions": [
-            "This type of copper media is used in industrial or similar environments where there is a lot of interference.",
-            "Traditionally used for television but can now be used in a network to connect the customer location to the wiring of the customer premises.",
-            "This type of media is used in wired office environments.",
-            "This type of media is used for high transmission speed and can also transfer data over long distances.",
-            "This type of media provides the most mobility options."
+            {
+                text: "This type of copper media is used in industrial or similar environments where there is a lot of interference.",
+                correctMatch: "STP"
+            },
+            {
+                text: "Traditionally used for television but can now be used in a network to connect the customer location to the wiring of the customer premises.",
+                correctMatch: "coaxial"
+            },
+            {
+                text: "This type of media is used in wired office environments.",
+                correctMatch: null
+            },
+            {
+                text: "This type of media is used for high transmission speed and can also transfer data over long distances.",
+                correctMatch: "optical fiber"
+            },
+            {
+                text: "This type of media provides the most mobility options.",
+                correctMatch: "wireless"
+            }
         ],
         "movableOptions": [
-            {
-                "text": "wireless",
-                "correctMatch": "This type of media provides the most mobility options."
-            },
-            {
-                "text": "coaxial",
-                "correctMatch": "Traditionally used for television but can now be used in a network to connect the customer location to the wiring of the customer premises."
-            },
-            {
-                "text": "optical fiber",
-                "correctMatch": "This type of media is used for high transmission speed and can also transfer data over long distances."
-            },
-            {
-                "text": "STP",
-                "correctMatch": "This type of copper media is used in industrial or similar environments where there is a lot of interference."
-            }
+            "wireless",
+            "coaxial",
+            "optical fiber",
+            "STP"
         ]
     },
     {
