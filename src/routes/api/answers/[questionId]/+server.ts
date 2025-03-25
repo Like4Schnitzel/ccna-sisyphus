@@ -64,6 +64,5 @@ export const PUT: RequestHandler = withValidatedInput(validateQuestionsPayload, 
 	
 	return json({
 		correct: wasCorrect,
-		choices: data
 	});
 });

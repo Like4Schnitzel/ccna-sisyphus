@@ -2,17 +2,48 @@ import { questions } from "$lib/components";
 import type { Question, QuestionDTO } from "$lib/types";
 import db from ".";
 
+// todo(f): this could be nicer if MCQQuestionDTO was exported
+type MCQAnswer = {
+	text: string,
+	selected: boolean
+};
+
+// also this
+type MatchAnswer = {
+	text: string,
+	matchedTo: string
+}
+
+type APIAnswer = MCQAnswer | MatchAnswer;
+
 /**
  * Gets all chosen answers of a user for a specific question
  * @param userId what user the answers belong to
  * @param questionId what question is asked for
  * @returns all answer indexes to that question
  */
-const getChosenAnswersForQuestion = (userId: string, questionId: number) => {
+const getChosenAnswersForQuestion = (userId: string, questionId: number): APIAnswer[] => {
+	const question = questions.find(q => q.id === questionId);
+	if (!question) {
+		throw new Error("Question could not be found");
+	}
+	
 	const answers = db.prepare("SELECT answerId as answerIndex FROM answer_choices WHERE userId = ? AND questionId = ?")
 		.all(userId, questionId) as { answerIndex: number }[];
 	
-	return answers.map(a => a.answerIndex);
+	if (question.type == "match") {
+		return answers.map(({ answerIndex }, currentIndex) => ({
+			text: question.staticOptions[currentIndex].text,
+			matchedTo: question.movableOptions[answerIndex] ?? null
+		}))
+	} else if (question.type == "mcq") {
+		return answers.map((_, currentIndex) => ({
+			text: question.answers[currentIndex].text,
+			selected: true
+		}));
+	} else {
+		throw new Error("Unhandled question type " + question);
+	}
 }
 
 const wasAnswerToQuestionCorrect = (userId: string, questionId: number) => {
