@@ -10,71 +10,63 @@
     <button class="start-first" onclick={() => goto("/questions/1")}>
         start training
     </button>
-    <hr>
 
     <input type="text" class="search" bind:value={searchValue} placeholder="search...">
-    
-    <section class="individual-section">
-        <div class="question-list">
-            {#each filteredQuestions as question}
-                <a href={`/questions/${question.id}`} class="card">
-                    <b>{question.id}</b>. {question.text}
-                </a>
-            {/each}
-        </div>
+    <section class="question-list">
+        {#each filteredQuestions as question}
+            <a href={`/questions/${question.id}`} class="card">
+                <b>{question.id}</b>. {question.text}
+            </a>
+        {/each}
     </section>
 </main>
 
 <style>
     main {
-        padding: 1em;
         max-width: 900px;
-        margin: 0 auto;
+        margin: 1em auto;
+        padding: 0 1em;
+        max-height: calc(100% - 2em); /* 2em padding */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .start-first {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        height: 8rem;
         font-size: 2em;
+        min-height: 3em;
     }
 
     .search {
-        width: 100%;
         padding: 0.33em;
-        margin: 0 auto;
-        margin-bottom: 0.25em;
-        box-sizing: border-box;
+        margin-bottom: 1em;
+        margin-top: 1em;
     }
 
     .question-list {
         padding-top: 0.3em;
-        gap: 0.25rem;
+        gap: 0.25em;
         margin: 0 auto;
         display: flex;
-        justify-content: center;
         flex-wrap: wrap;
+        overflow: auto;
+        flex-grow: 1;
+        height: 50vh;
     }
 
     .card {
-        flex: 1 1 calc(100% / 3 - 0.25rem);
+        flex: 1 1 calc(100% / 3 - 0.25em);
         border: 1px solid #000;
         border-radius: 4px;
-        padding: 0.8rem;
+        padding: 0.8em;
         display: block;
         text-decoration: none;
         box-sizing: border-box;
-        max-width: 33%;
+        min-width: 14em;
         word-wrap: break-word;
     }
 
     .card:any-link {
         color: #000;
-    }
-
-    .individual-section {
-        overflow: auto;
-        height: 50vh;
     }
 </style>

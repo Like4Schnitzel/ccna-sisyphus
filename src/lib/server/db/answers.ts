@@ -1,6 +1,20 @@
 import { questions } from "$lib/components";
-import type { QuestionDTO } from "$lib/types";
+import type { Question, QuestionDTO } from "$lib/types";
 import db from ".";
+
+// todo(f): this could be nicer if MCQQuestionDTO was exported
+type MCQAnswer = {
+	text: string,
+	selected: boolean
+};
+
+// also this
+type MatchAnswer = {
+	text: string,
+	matchedTo: string
+}
+
+type APIAnswer = MCQAnswer | MatchAnswer;
 
 /**
  * Gets all chosen answers of a user for a specific question
@@ -8,11 +22,28 @@ import db from ".";
  * @param questionId what question is asked for
  * @returns all answer indexes to that question
  */
-const getChosenAnswersForQuestion = (userId: string, questionId: number) => {
+const getChosenAnswersForQuestion = (userId: string, questionId: number): APIAnswer[] => {
+	const question = questions.find(q => q.id === questionId);
+	if (!question) {
+		throw new Error("Question could not be found");
+	}
+	
 	const answers = db.prepare("SELECT answerId as answerIndex FROM answer_choices WHERE userId = ? AND questionId = ?")
 		.all(userId, questionId) as { answerIndex: number }[];
 	
-	return answers.map(a => a.answerIndex);
+	if (question.type == "match") {
+		return answers.map(({ answerIndex }, currentIndex) => ({
+			text: question.staticOptions[currentIndex].text,
+			matchedTo: question.movableOptions[answerIndex] ?? null
+		}))
+	} else if (question.type == "mcq") {
+		return answers.map((_, currentIndex) => ({
+			text: question.answers[currentIndex].text,
+			selected: true
+		}));
+	} else {
+		throw new Error("Unhandled question type " + question);
+	}
 }
 
 const wasAnswerToQuestionCorrect = (userId: string, questionId: number) => {
@@ -29,13 +60,35 @@ const wasAnswerToQuestionCorrect = (userId: string, questionId: number) => {
  * @param questionId what question these answers are for
  * @param answerIndices the answer indices 
  */
-const putChosenChoicesForQuestions = (userId: string, questionId: number, answerIndices: number[]) => {
+const putChosenChoicesForQuestions = (userId: string, question: QuestionDTO, questionRequest: Partial<Question>) => {	
 	// we would firstly have to delete the old answers to the question and insert the new ones
 	db.transaction(() => {
-		db.prepare("DELETE FROM answer_choices WHERE userId = ? AND questionId = ?").run(userId, questionId);
+		db.prepare("DELETE FROM answer_choices WHERE userId = ? AND questionId = ?").run(userId, question.id);
+		
+		const answerIndices: number[] = [];
+		switch (questionRequest.type) {
+			case "mcq": {
+				if (!questionRequest.answers) break;
+				for (let i = 0; i < questionRequest.answers.length; i++) {
+					if (questionRequest.answers[i].selected) {
+						answerIndices.push(i);
+					}
+				}
+				console.log(answerIndices);
+				break;
+			}
+			case "match": {
+				if (!questionRequest.staticOptions || question.type !== "match") break;
+
+				for (let i = 0; i < questionRequest.staticOptions.length; i++) {
+					answerIndices.push(question.movableOptions.indexOf(questionRequest.staticOptions[i].matchedTo!));
+				}
+			}
+		}
+
 		for (const index of answerIndices) {
 			db.prepare("INSERT INTO answer_choices(userId, questionId, answerId) VALUES (?, ?, ?)")
-				.run(userId, questionId, index);
+				.run(userId, question.id, index);
 		}
 	})();
 }
@@ -47,15 +100,19 @@ const putChosenChoicesForQuestions = (userId: string, questionId: number, answer
  * @param choices indices of choices that were picked
  * @returns if the answer was correct or not
  */
-const putAnswerForQuestion = (userId: string, questionId: number, choices: number[]): boolean => {
+const putAnswerForQuestion = (userId: string, questionId: number, questionRequest: Partial<Question>): boolean => {
 	const question = questions.find(q => q.id == questionId);
 	if (!question) {
 		throw new Error("Couldn't find question with id " + questionId);
 	}
 
-	putChosenChoicesForQuestions(userId, questionId, choices);
+	if (question.type != questionRequest.type) {
+		throw new Error("Type of question did not match");
+	}
 
-	const isCorrect = validateQuestionCorrect(question, choices);
+	putChosenChoicesForQuestions(userId, question, questionRequest);
+
+	const isCorrect = validateQuestionCorrect(question, questionRequest);
 	
 
 	db.prepare("INSERT INTO answers (questionId, userId, isCorrect) VALUES (?, ?, ?) ON CONFLICT DO UPDATE SET isCorrect = excluded.isCorrect")
@@ -65,25 +122,35 @@ const putAnswerForQuestion = (userId: string, questionId: number, choices: numbe
 }
 
 // todo(f): this should probably not be right here
-const validateQuestionCorrect = (question: QuestionDTO, choices: number[]): boolean => {
-	switch (question.type) {
-		case "match": {
-			return question.movableOptions
-				.every((option, index) => option.correctMatch == question.staticOptions[choices[index]]);
-		}
+const validateQuestionCorrect = (question: QuestionDTO, request: Partial<Question>): boolean => {
+	if (question.type !== request.type) {
+		throw new Error("Question type did not match");
+	}
 
+	switch (question.type) {
 		case "mcq": {
+			if (request.type !== "mcq" || request.answers == null) return false;
+
 			for (let i = 0; i < question.answers.length; i++) {
-				const answer = question.answers[i];
-				if (!answer.correct && choices.includes(i)) {
-					return false;
-				} else if (answer.correct && !choices.includes(i)) {
+				if (question.answers[i].correct && !request.answers[i]?.selected
+					|| !question.answers[i].correct && request.answers[i]?.selected) {
 					return false;
 				}
-			};
+			}
+			return true;
+		}
+
+		case "match": {
+			if (request.type !== "match" || request.staticOptions == null) return false;
+
+			for (let i = 0; i < question.staticOptions.length; i++) {
+				if (question.staticOptions[i].correctMatch != request.staticOptions[i]?.matchedTo) 
+					return false;
+			}
 
 			return true;
 		}
+
 
 		default: {
 			throw new Error("Unimplemented validation for " + question);
