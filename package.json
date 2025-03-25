@@ -32,7 +32,8 @@
 	"dependencies": {
 		"arktype": "^2.1.10",
 		"bcrypt": "^5.1.1",
-		"better-sqlite3": "^11.9.1"
+		"better-sqlite3": "^11.9.1",
+		"svelte-select": "^5.8.3"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

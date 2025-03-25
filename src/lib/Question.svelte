@@ -1,8 +1,81 @@
 <script lang="ts">
+    import Select from "svelte-select";
     import type { Question, QuestionDTO } from "./types";
     export let questionDTO: QuestionDTO;
 
     const MAX_MATCH_COLUMNS = 4
+
+    let submissionCorrect: boolean | null = null;
+    let submitted = false;
+    let submitText = "Submit";
+    let submitClass = "";
+    let inputClasses: ("correct"|"incorrect"|"")[] = [];
+    let submitButton: HTMLButtonElement;
+    let mcqInputs: HTMLInputElement[] = [];
+    const matchSelectsAtSubmit: (string|null)[] = [];
+    async function submitQuestion() {
+        if (submitted || !question) return;
+
+        if (question.type === "mcq") {
+            if (selectedAnswer === null) {
+                console.error("selectedAnswer is null");
+                return;
+            }
+
+            submitted = true;
+            submitButton.disabled = true;
+
+            fetch(`/api/answers/${question.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(question),
+            });
+
+            submissionCorrect = true;
+            for (let i = 0; i < question.answers.length; i++) {
+                mcqInputs[i].disabled = true;
+                if (question.answers[i].correct) {
+                    inputClasses[i] = "correct";
+                } else {
+                    submissionCorrect = false;
+                    inputClasses[i] = "incorrect";
+                }
+            }
+            inputClasses = inputClasses;
+        } else if (question.type === "match") {
+            submitted = true;
+            submitButton.disabled = true;
+
+            fetch(`/api/answers/${question.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(question),
+            });
+
+            submissionCorrect = true;
+            for (let i = 0; i < question.staticOptions.length; i++) {
+                matchSelectsAtSubmit.push(question.staticOptions[i].matchedTo);
+                if (matchSelectsAtSubmit[i] === question.staticOptions[i].correctMatch) {
+                    inputClasses[i] = "correct";
+                } else {
+                    submissionCorrect = false;
+                    inputClasses[i] = "incorrect";
+                }
+            }
+        }
+
+        if (submissionCorrect) {
+            submitClass = "correct";
+            submitText = "Correct!";
+        } else {
+            submitClass = "incorrect";
+            submitText = "Incorrect";
+        }
+    }
 
     let question: Question | null;
     if (questionDTO.type === "mcq") {
@@ -16,7 +89,7 @@
     } else if (questionDTO.type === "match") {
         question = {
             ...questionDTO,
-            movableOptions: questionDTO.movableOptions.map((option) => ({
+            staticOptions: questionDTO.staticOptions.map((option) => ({
                 ...option,
                 matchedTo: null,
             })),
@@ -24,6 +97,12 @@
     } else {
         question = null;
         console.error("Question type not implemented:", questionDTO);
+    }
+
+    if (question?.type === "mcq") {
+        inputClasses = question.answers.map(() => "");
+    } else if (question?.type === "match") {
+        inputClasses = question.staticOptions.map(() => "");
     }
 
     const correctAnswersAmount: number | null = question?.type == "mcq" ? question?.answers.filter((a) => a.correct).length : null;
@@ -43,8 +122,6 @@
             }
         }
     }
-
-    const selectedMovableAnswers: (number | null)[] = [];
 </script>
 
 {#if question === null}
@@ -61,13 +138,13 @@
         {#if question.type === "mcq"}
             <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
-                    <li>
+                    <li class={inputClasses[i]}>
                         <label for={i.toString()}>
                             <p>{answer.text}</p>
                             {#if correctAnswersAmount === 1}
-                                <input type="radio" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                                <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {:else}
-                                <input type="checkbox" name="answer" id={i.toString()} value={i} bind:group={selectedAnswer} />
+                                <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {/if}
                         </label>
                     </li>
@@ -80,14 +157,30 @@
                 {#each question.staticOptions as option, i (i)}
                     <div class="match-component-wrapper-wrapper">
                         <div class="match-component-wrapper">
-                            <div class="match-component">
-                                <h2>{option}</h2>
-                                <select bind:value={selectedMovableAnswers[i]}>
-                                    <option value={null} selected>Select an answer</option>
-                                    {#each question.movableOptions as answer, j (j)}
-                                        <option value={j}>{answer.text}</option>
-                                    {/each}
-                                </select>
+                            <div class="match-component {inputClasses[i]}">
+                                <h2>{option.text}</h2>
+                                <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo}>
+                                    <div class="select-selection" slot="selection" let:selection>
+                                        {selection.label}
+                                        {#if submitted}
+                                            {#if selection.value === question.staticOptions[i].correctMatch}
+                                                <div class="correct"></div>
+                                            {:else if selection.value === matchSelectsAtSubmit[i]}
+                                                <div class="incorrect"></div>
+                                            {/if}
+                                        {/if}
+                                    </div>
+                                    <div class="select-item" slot="item" let:item>
+                                        {item.label}
+                                        {#if submitted}
+                                            {#if item.value === question.staticOptions[i].correctMatch}
+                                                <div class="correct"></div>
+                                            {:else if item.value === matchSelectsAtSubmit[i]}
+                                                <div class="incorrect"></div>
+                                            {/if}
+                                        {/if}
+                                    </div>
+                                </Select>
                             </div>
                         </div>
                     </div>
@@ -95,7 +188,7 @@
             </div>
         {/if}
         <div class="submit">
-            <button>Submit</button> <!-- TODO submission logic -->
+            <button bind:this={submitButton} class={submitClass} on:click={submitQuestion}>{submitText}</button>
         </div>
     </div>
 {/if}
@@ -105,6 +198,32 @@
         --initial-mcq-background: white;
         --hovered-mcq-background: rgba(135, 206, 250, 0.321);
         --selected-mcq-background: lightskyblue;
+    }
+
+    button.correct {
+        color: lime;
+    }
+
+    .select-item:has(.correct), .select-selection:has(.correct) {
+        color: lime;
+        font-weight: bold;
+    }
+
+    button.incorrect {
+        color: red;
+    }
+
+    .select-item:has(.incorrect), .select-selection:has(.incorrect) {
+        color: red;
+        font-weight: bold;
+    }
+
+    li.correct, .match-component.correct {
+        background-color: lightgreen !important;
+    }
+
+    li.incorrect, .match-component.incorrect {
+        background-color: lightcoral !important;
     }
 
     .question {
@@ -129,7 +248,6 @@
 
     .match-component-wrapper-wrapper {
         width: calc(100% / var(--width-division-match));
-        margin-bottom: calc(20% / var(--width-division-match));
         align-self: center;
     }
 
@@ -156,11 +274,6 @@
     .match-component h2 {
         margin-top: 0;
         height: max-content;
-    }
-
-    .match-component select {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
     }
 
     .mcq li {
@@ -238,6 +351,7 @@
         width: 100%;
         height: 100%;
         border: 0;
+        font-size: x-large;
         font-weight: bold;
         border-top: 1px solid black;
     }
