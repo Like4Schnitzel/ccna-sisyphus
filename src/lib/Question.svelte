@@ -25,25 +25,25 @@
             submitted = true;
             submitButton.disabled = true;
 
-            fetch(`/api/answers/${question.id}`, {
+            const response = fetch(`/api/answers/${question.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(question),
             });
-
-            submissionCorrect = true;
+            
             for (let i = 0; i < question.answers.length; i++) {
                 mcqInputs[i].disabled = true;
                 if (question.answers[i].correct) {
                     inputClasses[i] = "correct";
                 } else {
-                    submissionCorrect = false;
                     inputClasses[i] = "incorrect";
                 }
             }
             inputClasses = inputClasses;
+
+            submissionCorrect = (await (await response).json()).correct;
         } else if (question.type === "match") {
             submitted = true;
             submitButton.disabled = true;
