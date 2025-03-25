@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Select from "svelte-select";
     import type { Question, QuestionDTO } from "./types";
     export let questionDTO: QuestionDTO;
 
@@ -11,6 +12,7 @@
     let inputClasses: ("correct"|"incorrect"|"")[] = [];
     let submitButton: HTMLButtonElement;
     let mcqInputs: HTMLInputElement[] = [];
+    const matchSelectsAtSubmit: (string|null)[] = [];
     async function submitQuestion() {
         if (submitted || !question) return;
 
@@ -20,43 +22,58 @@
                 return;
             }
 
-            let payload: number[];
-            if (!(selectedAnswer instanceof Array)) {
-                payload = [selectedAnswer];
-            } else {
-                payload = selectedAnswer;
-            }
-
             submitted = true;
             submitButton.disabled = true;
 
-            const response = await fetch(`/api/answers/${question.id}`, {
+            fetch(`/api/answers/${question.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(payload),
+                body: JSON.stringify(question),
             });
-            const responseContent = await response.json();
-            submissionCorrect = responseContent.correct;
 
-            if (submissionCorrect) {
-                submitClass = "correct";
-                submitText = "Correct!";
-            } else {
-                submitClass = "incorrect";
-                submitText = "Incorrect";
-            }
-
+            submissionCorrect = true;
             for (let i = 0; i < question.answers.length; i++) {
                 mcqInputs[i].disabled = true;
                 if (question.answers[i].correct) {
                     inputClasses[i] = "correct";
                 } else {
+                    submissionCorrect = false;
                     inputClasses[i] = "incorrect";
                 }
             }
             inputClasses = inputClasses;
+        } else if (question.type === "match") {
+            submitted = true;
+            submitButton.disabled = true;
+
+            fetch(`/api/answers/${question.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(question),
+            });
+
+            submissionCorrect = true;
+            for (let i = 0; i < question.staticOptions.length; i++) {
+                matchSelectsAtSubmit.push(question.staticOptions[i].matchedTo);
+                if (matchSelectsAtSubmit[i] === question.staticOptions[i].correctMatch) {
+                    inputClasses[i] = "correct";
+                } else {
+                    submissionCorrect = false;
+                    inputClasses[i] = "incorrect";
+                }
+            }
+        }
+
+        if (submissionCorrect) {
+            submitClass = "correct";
+            submitText = "Correct!";
+        } else {
+            submitClass = "incorrect";
+            submitText = "Incorrect";
         }
     }
 
@@ -72,7 +89,7 @@
     } else if (questionDTO.type === "match") {
         question = {
             ...questionDTO,
-            movableOptions: questionDTO.movableOptions.map((option) => ({
+            staticOptions: questionDTO.staticOptions.map((option) => ({
                 ...option,
                 matchedTo: null,
             })),
@@ -105,8 +122,6 @@
             }
         }
     }
-
-    const selectedMovableAnswers: (number | null)[] = [];
 </script>
 
 {#if question === null}
@@ -142,14 +157,30 @@
                 {#each question.staticOptions as option, i (i)}
                     <div class="match-component-wrapper-wrapper">
                         <div class="match-component-wrapper">
-                            <div class="match-component">
-                                <h2>{option}</h2>
-                                <select bind:value={selectedMovableAnswers[i]}>
-                                    <option value={null} selected>Select an answer</option>
-                                    {#each question.movableOptions as answer, j (j)}
-                                        <option value={j}>{answer.text}</option>
-                                    {/each}
-                                </select>
+                            <div class="match-component {inputClasses[i]}">
+                                <h2>{option.text}</h2>
+                                <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo}>
+                                    <div class="select-selection" slot="selection" let:selection>
+                                        {selection.label}
+                                        {#if submitted}
+                                            {#if selection.value === question.staticOptions[i].correctMatch}
+                                                <div class="correct"></div>
+                                            {:else if selection.value === matchSelectsAtSubmit[i]}
+                                                <div class="incorrect"></div>
+                                            {/if}
+                                        {/if}
+                                    </div>
+                                    <div class="select-item" slot="item" let:item>
+                                        {item.label}
+                                        {#if submitted}
+                                            {#if item.value === question.staticOptions[i].correctMatch}
+                                                <div class="correct"></div>
+                                            {:else if item.value === matchSelectsAtSubmit[i]}
+                                                <div class="incorrect"></div>
+                                            {/if}
+                                        {/if}
+                                    </div>
+                                </Select>
                             </div>
                         </div>
                     </div>
@@ -173,15 +204,25 @@
         color: lime;
     }
 
+    .select-item:has(.correct), .select-selection:has(.correct) {
+        color: lime;
+        font-weight: bold;
+    }
+
     button.incorrect {
         color: red;
     }
 
-    li.correct {
+    .select-item:has(.incorrect), .select-selection:has(.incorrect) {
+        color: red;
+        font-weight: bold;
+    }
+
+    li.correct, .match-component.correct {
         background-color: lightgreen !important;
     }
 
-    li.incorrect {
+    li.incorrect, .match-component.incorrect {
         background-color: lightcoral !important;
     }
 
@@ -233,11 +274,6 @@
     .match-component h2 {
         margin-top: 0;
         height: max-content;
-    }
-
-    .match-component select {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
     }
 
     .mcq li {
