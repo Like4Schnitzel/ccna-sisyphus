@@ -32,7 +32,7 @@ export const questions: QuestionDTO[] = [
         "id": 1,
         "text": "Refer to the exhibit. Host B on subnet Teachers transmits a packet to host D on subnet Students. Which Layer 2 and Layer 3 addresses are contained in the PDUs that are transmitted from host B to the router?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i204796v11n1_204796-topology-arp.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i204796v11n1_204796-topology-arp.png",
         "imgAlt": "The graphic contains two subnets. The subnet Teachers contains two hosts connected through a switch: host A with MAC address 00-00-0c-94-36-aa and IP address 172.16.10.100/24, and host B with MAC address 00-00-0c-94-36-bb and IP address 172.16.10.200/24. The switch is connected to the router through the Fast Ethernet 0 interface. This interface has a MAC address 00-00-0c-94-36-ab and an IP address 172.16.10.99/24. The other interface of the router, Fast Ethernet 1 has a MAC address 00-00-0c-94-36-cd and IP address 172.16.20.99/24. This interface is part of subnet Students and it is connected to another switch. Two other hosts are connected to this switch: host C with MAC address 00-00-0c-94-36-cc and IP address 172.16.20.100/24, and host D with MAC address 00-00-0c-94-36-dd and IP address 172.16.20.200/24.",
         "answers": [
             {
@@ -521,7 +521,7 @@ export const questions: QuestionDTO[] = [
         "id": 19,
         "text": "Refer to the exhibit. A company uses the address block of 128.107.0.0/16 for its network. What subnet mask would provide the maximum number of equal size subnets while providing enough host addresses for each subnet in the exhibit?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i207609v1n1_207609.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i207609v1n1_207609.png",
         "imgAlt": "A central router is directly connected to four other routers.  Each of those routers is connected to a cloud of computers.  The clouds are labeled \"75 Hosts\", \"100 Hosts\", \"25 Hosts\", and \"50 Hosts\".",
         "answers": [
             {
@@ -724,7 +724,7 @@ export const questions: QuestionDTO[] = [
         "id": 27,
         "text": "Refer to the exhibit. An administrator is trying to configure the switch but receives the error message that is displayed in the exhibit. What is the problem?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i208399v1n1_question_1.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i208399v1n1_question_1.png",
         "imgAlt": "A CLI output that says the following:  Switch1> config t             ^ % Invalid input detected at '^' marker.  The ^ is under the \"f\" in the word \"config\"",
         "answers": [
             {
@@ -1033,7 +1033,7 @@ export const questions: QuestionDTO[] = [
         "id": 39,
         "text": "Refer to the exhibit. PC1 issues an ARP request because it needs to send a packet to PC2. In this scenario, what will happen next?​",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i209824v1n1_209824.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i209824v1n1_209824.png",
         "imgAlt": "The exhibit shows a network topology. PC1 and PC2 are connected to the Fa0/1 and Fa0/2 ports of the SW1 switch, respectively. SW1 is connected through its Fa0/3 port to the Fa0/0 interface of the RT1 router. RT1 is connected through its Fa0/1 to the Fa0/2 port of SW2 switch. SW2 is connected through its Fa0/1 port to the PC3.",
         "answers": [
             {
@@ -1721,7 +1721,7 @@ export const questions: QuestionDTO[] = [
         "id": 65,
         "text": "Refer to the exhibit. If PC1 is sending a packet to PC2 and routing has been configured between the two routers, what will R1 do with the Ethernet frame header attached by PC1?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i271152v1n1_271152.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i271152v1n1_271152.png",
         "imgAlt": "The exhibit shows PC1 assigned an address of 192.168.10.8/24 attached to a switch that is attached to the G0/0 port of R1. R1 has a serial connection to R2 through port S0/0/0 on both routers. Port G0/0 on router R2 connects to a switch that connects to a PC labeled PC2 with the IP address of 192.168.11.5/24.",
         "answers": [
             {
@@ -1746,7 +1746,7 @@ export const questions: QuestionDTO[] = [
         "id": 66,
         "text": "Refer to the exhibit. Which protocol was responsible for building the table that is shown?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i271168v4n1_Item-271168.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i271168v4n1_Item-271168.png",
         "imgAlt": "The graphic contains the following information: <output omitted>   Interface: 192.168.1.67 --- 0xa  Internet Address        Physical Address      Type 192.168.1.254           64-0f-29-0d-36-91     dynamic 192.168.1.255           ff-ff-ff-ff-ff-ff            static 224.0.0.22                 01-00-5e-00-00-16    static   224.0.0.251               01-00-5e-00-00-fb     static 224.0.0.252               01-00-5e-00-00-fc     static 255.255.255.255        ff-ff-ff-ff-ff-ff     static Interface: 10.82.253.91 --- 0x10  Internet Address        Physical Address      Type 10.82.253.92             64-0f-29-0d-36-91     dynamic 224.0.0.22                 01-00-5e-00-00-16     static   224.0.0.251               01-00-5e-00-00-fb     static 224.0.0.252               01-00-5e-00-00-fc     static 255.255.255.255       ff-ff-ff-ff-ff-ff            static​",
         "answers": [
             {
@@ -1906,7 +1906,7 @@ export const questions: QuestionDTO[] = [
         "id": 72,
         "text": "Refer to the exhibit. What three facts can be determined from the viewable output of the show ip interface brief command? (Choose three.)",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i274067v1n1_274067.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274067v1n1_274067.png",
         "imgAlt": "The exhibit show the output from the show ip interface brief command executed on a switch. The output is as follows: Switch#  show ip interface brief Interface          IP-Address       OK?   Method   Status    Protocol FastEthernet0/1     unassigned      YES     manual      up          up FastEthernet0/2     unassigned      YES     manual     down   down FastEthernet0/3     unassigned      YES     manual     down   down FastEthernet0/5     unassigned      YES     manual     down   down FastEthernet0/6     unassigned      YES     manual     down   down (output omitted) FastEthernet0/23  unassigned       YES     manual     down   down FastEthernet0/24  unassigned       YES     manual     down   down Vlan1                      192.168.11.3     YES    manual     up         up",
         "answers": [
             {
@@ -2047,7 +2047,7 @@ export const questions: QuestionDTO[] = [
         "id": 77,
         "text": "Refer to the exhibit. What is wrong with the displayed termination?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i274300v1n1_209630.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274300v1n1_209630.png",
         "imgAlt": "The graphic displays a terminated RJ45 connector. The untwisted wires at the end of the PVC sheath are crimped by the connector.",
         "answers": [
             {
@@ -2226,7 +2226,7 @@ export const questions: QuestionDTO[] = [
         "id": 84,
         "text": "Refer to the exhibit. Which two network addresses can be assigned to the network containing 10 hosts? Your answers should waste the fewest addresses, not reuse addresses that are already assigned, and stay within the 10.18.10.0/24 range of addresses. (Choose two.)",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i274518v1n1_247518.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274518v1n1_247518.png",
         "imgAlt": "The exhibit shows the R1 router with three separate connections to three switches. Each switch has a PC. Under each PC from left to right are the following numbers and words: 10.18.10.0/26, 10.18.10.192/29, and 10 hosts.",
         "answers": [
             {
@@ -2259,7 +2259,7 @@ export const questions: QuestionDTO[] = [
         "id": 85,
         "text": "Refer to the exhibit. The network administrator has assigned the LAN of LBMISS an address range of 192.168.10.0. This address range has been subnetted using a /29 prefix. In order to accommodate a new building, the technician has decided to use the fifth subnet for configuring the new network (subnet zero is the first subnet). By company policies, the router interface is always assigned the first usable host address and the workgroup server is given the last usable host address. Which configuration should be entered into the properties of the workgroup server to allow connectivity to the Internet?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i274544v1n1_209840.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274544v1n1_209840.png",
         "imgAlt": "Four PCs and a server are connected to a switch. The switch is connected the the LBMISS router. The LBMISS router is connected via a serial link to the \"cloud\" labeled ISP.",
         "answers": [
             {
@@ -2319,7 +2319,7 @@ export const questions: QuestionDTO[] = [
         "id": 87,
         "text": "Refer to the exhibit. If host A sends an IP packet to host B, what will the destination address be in the frame when it leaves host A?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i274590v1n1_274590.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274590v1n1_274590.png",
         "imgAlt": "Host A has IP address 172.168.10.99 /26 and a MAC address of AA:AA:AA:AA:AA:AA. A switch connects between host A and an Ethernet port on router R2. That port has an IP address of 172.168.10.65 /26 and a MAC address of BB:BB:BB:BB:BB:BB. R2 connects to router R1 via a serial port assigned 172.168.10.129 /30. The R1 serial interface has the IP address of 172.168.10.130 /30. The R1 Ethernet port connected to another switch has an IP address of 172.168.11.65 /26 and a MAC address of CC:CC:CC:CC:CC:CC. Host B connects to the same switch as R1. Host B has an IP address of 172.168.11.88 /26 and a MAC address of DD:DD:DD:DD:DD:DD.",
         "answers": [
             {
@@ -2429,7 +2429,7 @@ export const questions: QuestionDTO[] = [
         "id": 91,
         "text": "Refer to the exhibit. The switches are in their default configuration. Host A needs to communicate with host D, but host A does not have the MAC address for its default gateway. Which network hosts will receive the ARP request sent by host A?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i275353v1n1_275353.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275353v1n1_275353.png",
         "imgAlt": "Three hosts (labeled A, B, and C) connect to a switch that connects to router R1. Router R1 connects through a serial connection to router R2. R2 connects to a switch that connects to host D.",
         "answers": [
             {
@@ -2462,7 +2462,7 @@ export const questions: QuestionDTO[] = [
         "id": 92,
         "text": "Refer to the exhibit. If Host1 were to transfer a file to the server, what layers of the TCP/IP model would be used?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i275370v1n1_275370.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275370v1n1_275370.png",
         "imgAlt": "Host1 connects to Switch1 and then to Router1. Router1 connects to Router2 via a serial link. Router2 connects to Switch2 and Switch2 connects to a server. Router2 also connects to an ISP via a serial link.",
         "answers": [
             {
@@ -2574,7 +2574,7 @@ export const questions: QuestionDTO[] = [
         "id": 96,
         "text": "Refer to the exhibit. On the basis of the output, which two statements about network connectivity are correct? (Choose two.)",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i275429v1n1_chapter-9-wan-images2.jpg",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275429v1n1_chapter-9-wan-images2.jpg",
         "imgAlt": "The graphic displays the following: C:\\Windows\\system32> tracert 192.168.100.1 Tracing route to 192.168.100.1 over a maximum of 30 hops 1   1 ms   <1 ms   <1 ms    10.10.10.10 2   2 ms    2 ms    1 ms    192.168.1.22 3   2 ms    2 ms    1 ms    192.168.1.62 4   2 ms    2 ms    1 ms    172.16.1.1 Trace complete.",
         "answers": [
             {
@@ -2719,7 +2719,7 @@ export const questions: QuestionDTO[] = [
         "id": 101,
         "text": "Refer to the exhibit. The IP address of which device interface should be used as the default gateway setting of host H1?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i284612v1n1_dg-item.jpg",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i284612v1n1_dg-item.jpg",
         "imgAlt": "The graphic shows a network topology that consists of three routers, R1, R2, and R3, that are connected to one another by serial links. The R1 G0/0 and G0/1 interfaces are attached to one LAN switch each. Each LAN switch has three hosts attached to it. One of the hosts that is attached to the G0/0 interface of R1 is labeled as H1. The R1 S0/0/0 interface is attached to R2. The R2 S0/0/1 interface is attached to a cloud that is labelled ISP. The R2 S0/1/0 interface is attached to the S0/0/0 interface of R3. The G0/0 interface of R3 is attached to a LAN switch. The LAN switch has three hosts attached to it.",
         "answers": [
             {
@@ -2813,7 +2813,7 @@ export const questions: QuestionDTO[] = [
         "id": 105,
         "text": "Refer to the exhibit. A network engineer has been given the network address of 192.168.99.0 and a subnet mask of 255.255.255.192 to subnet across the four networks shown. How many total host addresses are unused across all four subnets?",
         "type": "mcq",
-        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-examen-US/assets/i304957v1n1_209418.png",
+        "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i304957v1n1_209418.png",
         "imgAlt": "There are 3 routers. A line from the first router points to a text box that states 30 hosts. The first router is connected to the second router with a serial link. The second router is connected to the third router with a serial link. A line from the third router points to a text box that states 14 hosts.",
         "answers": [
             {
