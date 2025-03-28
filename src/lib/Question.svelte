@@ -140,7 +140,13 @@
                 {#each question.answers as answer, i (i)}
                     <li class={inputClasses[i]}>
                         <label for={i.toString()}>
-                            <p>{answer.text}</p>
+                            {#if "text" in answer}
+                                <p>{answer.text}</p>
+                            {:else if "imgSrc" in answer}
+                                <!--svelte-ignore a11y_missing_attribute-->
+                                <!-- the source data doesn't have alt text -->
+                                <img src={answer.imgSrc} />
+                            {/if}
                             {#if correctAnswersAmount === 1}
                                 <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {:else}
@@ -308,6 +314,14 @@
         font-weight: bold;
         font-size: larger;
         text-align: center;
+    }
+
+    .mcq li label img {
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        width: 90%;
+        height: 90%;
     }
 
     .mcq li label input {
