@@ -136,6 +136,10 @@
             </h1>
         </header>
         {#if question.type === "mcq"}
+            {#if 'imgSrc' in question}
+                <img src={question.imgSrc} alt={question.imgAlt} class="question-image" />
+            {/if}
+
             <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
                     <li class={inputClasses[i]}>
@@ -368,5 +372,15 @@
         font-size: x-large;
         font-weight: bold;
         border-top: 1px solid black;
+    }
+
+    .question-image {
+        max-height: 40%;
+        max-width: 100%;
+        align-self: center;
+    }
+
+    .question header {
+        font-size: clamp(0.7rem, 2vw, 1rem);
     }
 </style>
