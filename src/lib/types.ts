@@ -3,12 +3,21 @@ type QuestionBase = {
     text: string
 }
 
+type TextAnswer = {
+    text: string,
+    correct: boolean
+}
+
+type ImgAnswer = {
+    imgSrc: string,
+    correct: boolean
+}
+
 type MCQQuestionDTO = QuestionBase & {
     type: "mcq",
-    answers: {
-        text: string,
-        correct: boolean
-    }[],
+    imgSrc?: string,
+    imgAlt?: string,
+    answers: (TextAnswer | ImgAnswer)[],
 }
 
 type MatchQuestionDTO = QuestionBase & {
