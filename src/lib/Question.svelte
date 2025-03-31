@@ -136,11 +136,21 @@
             </h1>
         </header>
         {#if question.type === "mcq"}
+            {#if 'imgSrc' in question}
+                <img src={question.imgSrc} alt={question.imgAlt} class="question-image" />
+            {/if}
+
             <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
                 {#each question.answers as answer, i (i)}
                     <li class={inputClasses[i]}>
                         <label for={i.toString()}>
-                            <p>{answer.text}</p>
+                            {#if "text" in answer}
+                                <p>{answer.text}</p>
+                            {:else if "imgSrc" in answer}
+                                <!--svelte-ignore a11y_missing_attribute-->
+                                <!-- the source data doesn't have alt text -->
+                                <img src={answer.imgSrc} />
+                            {/if}
                             {#if correctAnswersAmount === 1}
                                 <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                             {:else}
@@ -310,6 +320,14 @@
         text-align: center;
     }
 
+    .mcq li label img {
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        width: 90%;
+        height: 90%;
+    }
+
     .mcq li label input {
         width: 100%;
         height: 100%;
@@ -354,5 +372,15 @@
         font-size: x-large;
         font-weight: bold;
         border-top: 1px solid black;
+    }
+
+    .question-image {
+        max-height: 40%;
+        max-width: 100%;
+        align-self: center;
+    }
+
+    .question header {
+        font-size: clamp(0.7rem, 2vw, 1rem);
     }
 </style>
