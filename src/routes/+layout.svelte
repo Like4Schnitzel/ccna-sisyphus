@@ -8,12 +8,17 @@
         setContext("userData", data.userData);
     }
 
-    const currentQuestionIndex = questions.findIndex((q) => q.id === data.currentQuestion)
-    const previousQuestion: number | undefined = questions[currentQuestionIndex - 1]?.id;
-    const nextQuestion: number | undefined = questions[currentQuestionIndex + 1]?.id;
+    let currentQuestionIndex = $state(questions.findIndex((q) => q.id === data.currentQuestion));
+    let previousQuestion, nextQuestion;
+    let previousQuestionHref = $state("");
+    let nextQuestionHref = $state("");
+    if (currentQuestionIndex >= 0) {
+        previousQuestion = questions[currentQuestionIndex - 1]?.id;
+        nextQuestion = questions[currentQuestionIndex + 1]?.id;
 
-    const previousQuestionHref = previousQuestion ? `/questions/${previousQuestion}` : "";
-    const nextQuestionHref = nextQuestion ? `/questions/${nextQuestion}` : "";
+        previousQuestionHref = previousQuestion !== undefined ? `/questions/${previousQuestion}` : "";
+        nextQuestionHref = nextQuestion !== undefined ? `/questions/${nextQuestion}` : "";
+    }
 </script>
 
 <div class="main">
@@ -28,10 +33,17 @@
     <div class="content">
         {@render children()}
     </div>
-    <nav data-sveltekit-preload-data data-sveltekit-reload>
-        <a href={previousQuestionHref}>Previous</a>
+    <nav>
+        {#if previousQuestionHref !== ""}
+            <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
+        {:else}
+            <div></div> <!-- Placeholder -->        {/if}
         <p>Gubi</p>
-        <a href={nextQuestionHref}>Next</a>
+        {#if nextQuestionHref !== ""}
+            <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
+        {:else}
+            <div></div> <!-- Placeholder -->
+        {/if}
     </nav>
 </div>
 
