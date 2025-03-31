@@ -23,7 +23,7 @@
 
 <div class="main">
     <header>
-        <h1>Quiz App</h1>
+        <h1><a href="/" data-sveltekit-preload-data data-sveltekit-reload>Quiz App</a></h1>
         {#if data.userData}
             <a href="/logout">{data.userData.username}</a>
         {:else}
@@ -37,7 +37,8 @@
         {#if previousQuestionHref !== ""}
             <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
         {:else}
-            <div></div> <!-- Placeholder -->        {/if}
+            <div></div> <!-- Placeholder -->
+        {/if}
         <p>Gubi</p>
         {#if nextQuestionHref !== ""}
             <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
