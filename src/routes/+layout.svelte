@@ -1,11 +1,19 @@
 <script lang="ts">
     import { setContext } from 'svelte';
+    import { questions } from '$lib/components';
     let { children, data } = $props();
 
     // set userData context if we're signed in
     if (data.userData) {
         setContext("userData", data.userData);
     }
+
+    const currentQuestionIndex = questions.findIndex((q) => q.id === data.currentQuestion)
+    const previousQuestion: number | undefined = questions[currentQuestionIndex - 1]?.id;
+    const nextQuestion: number | undefined = questions[currentQuestionIndex + 1]?.id;
+
+    const previousQuestionHref = previousQuestion ? `/questions/${previousQuestion}` : "";
+    const nextQuestionHref = nextQuestion ? `/questions/${nextQuestion}` : "";
 </script>
 
 <div class="main">
@@ -20,9 +28,11 @@
     <div class="content">
         {@render children()}
     </div>
-    <footer>
+    <nav data-sveltekit-preload-data data-sveltekit-reload>
+        <a href={previousQuestionHref}>Previous</a>
         <p>Gubi</p>
-    </footer>
+        <a href={nextQuestionHref}>Next</a>
+    </nav>
 </div>
 
 <style>
@@ -44,12 +54,14 @@
         flex-direction: column;
     }
 
-    header, footer {
+    header, nav {
         background-color: #111;
         color: azure;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-left: 2%;
+        padding-right: 2%;
     }
 
     .content {
@@ -60,7 +72,7 @@
         margin: 0;
     }
 
-    footer, a:any-link {
+    nav, a:any-link {
         color: #c0ddff;
     }
 </style>
