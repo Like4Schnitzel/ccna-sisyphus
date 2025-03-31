@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
     import { questions } from "$lib/components";
 
     let searchValue = $state("");
@@ -7,14 +6,12 @@
 </script>
 
 <main>
-    <button class="start-first" onclick={() => goto("/questions/1")}>
-        start training
-    </button>
+    <a class="start-first" data-sveltekit-preload-data data-sveltekit-reload href="/questions/1">start training</a>
 
     <input type="text" class="search" bind:value={searchValue} placeholder="search...">
     <section class="question-list">
         {#each filteredQuestions as question}
-            <a href={`/questions/${question.id}`} class="card">
+            <a data-sveltekit-preload-data data-sveltekit-reload href={`/questions/${question.id}`} class="card">
                 <b>{question.id}</b>. {question.text}
             </a>
         {/each}
@@ -33,8 +30,26 @@
     }
 
     .start-first {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        width: 100%;
+        text-decoration: none;
+        color: white;
+        background-color: darkgray; /* why is darkgray lighter than gray ???? */
+        border-radius: 5px;
+        border: 1px solid black;
         font-size: 2em;
         min-height: 3em;
+    }
+
+    .start-first:hover {
+        background-color: rgb(148, 148, 148);
+    }
+
+    .start-first:active {
+        background-color: gray;
     }
 
     .search {
