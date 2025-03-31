@@ -121,6 +121,44 @@ const putAnswerForQuestion = (userId: string, questionId: number, questionReques
 	return isCorrect;
 }
 
+/**
+ * Gets a question ready for the frontend to use
+ * @param question the real question
+ * @param questionFromRequest question from request
+ * @returns question ready for frontend
+ */
+const getQuestionForFrontend = (question: QuestionDTO, questionFromRequest: Partial<Question>) => {
+	switch (question.type) {
+		case "mcq": {
+			// ty typescript
+			if (questionFromRequest.type !== "mcq") throw new Error("Unexpected question type");
+			if (!questionFromRequest.answers) throw new Error("No answers given");
+
+			for (let i = 0; i < question.answers.length; i++) {
+				if (question.answers[i].correct == questionFromRequest.answers[i].selected) {
+					questionFromRequest.answers[i].correct = question.answers[i].correct;
+				}
+			}
+			break;
+		}
+
+		case "match": {
+			if (questionFromRequest.type !== "match") throw new Error("Unexpected question type");
+			if (!questionFromRequest.staticOptions) throw new Error("staticOptions was missing");
+
+			for (let i = 0; i < question.staticOptions.length; i++) {
+				if (questionFromRequest.staticOptions[i].matchedTo === question.staticOptions[i].correctMatch) {
+					questionFromRequest.staticOptions[i].correctMatch = question.staticOptions[i].correctMatch;
+				} else {
+					questionFromRequest.staticOptions[i].correctMatch = "";
+				}
+			}
+		}
+	}
+
+	return questionFromRequest;
+}
+
 // todo(f): this should probably not be right here
 const validateQuestionCorrect = (question: QuestionDTO, request: Partial<Question>): boolean => {
 	if (question.type !== request.type) {
@@ -195,5 +233,6 @@ export {
 	putAnswerForQuestion, 
 	wasAnswerToQuestionCorrect, 
 	validateQuestionCorrect, 
-	getIncorrectAnswers 
+	getIncorrectAnswers,
+	getQuestionForFrontend
 };

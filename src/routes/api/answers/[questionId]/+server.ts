@@ -1,4 +1,4 @@
-import { getChosenAnswersForQuestion, putAnswerForQuestion, validateQuestionCorrect, wasAnswerToQuestionCorrect } from "$lib/server/db/answers";
+import { getChosenAnswersForQuestion, getQuestionForFrontend, putAnswerForQuestion, validateQuestionCorrect, wasAnswerToQuestionCorrect } from "$lib/server/db/answers";
 import { json } from "@sveltejs/kit";
 import { type } from "arktype";
 import type { RequestHandler } from "./$types";
@@ -33,7 +33,6 @@ const validateQuestionsPayload = type({
 
 
 export const PUT: RequestHandler = withValidatedInput(validateQuestionsPayload, async ({ locals, params }, data) => {
-	let wasCorrect = false;
 	const questionId = parseFloat(params.questionId!);
 
 	// todo(f): figure out how to validate this in arktype directly
@@ -45,24 +44,19 @@ export const PUT: RequestHandler = withValidatedInput(validateQuestionsPayload, 
 	}
 
 	const questionFromRequest = data as Partial<Question>;
-
-	// todo(f): this could be cleaner
-	if (locals.userData) {
-		// putAnswerForQuestion also inserts it into the db
-		// this is why we dont call it if we're not authenticated
-		wasCorrect = putAnswerForQuestion(locals.userData!.uuid, questionId, questionFromRequest);
-	} else {
-		const question = questions.find(q => q.id == questionId);
-		if (!question) {
-			return json({
-				"error": "Question could not be found"
-			}, { status: 400 });
-		}
-		
-		wasCorrect = validateQuestionCorrect(question, questionFromRequest);
+	const question = questions.find(q => q.id == questionId);
+	if (!question) {
+		return json({
+			"error": "Question could not be found"
+		}, { status: 400 });
 	}
-	
+
+	if (locals.userData) {
+		putAnswerForQuestion(locals.userData!.uuid, questionId, questionFromRequest);
+	}
+
 	return json({
-		correct: wasCorrect,
+		correct: validateQuestionCorrect(question, questionFromRequest),
+		question: getQuestionForFrontend(question, questionFromRequest)
 	});
 });
