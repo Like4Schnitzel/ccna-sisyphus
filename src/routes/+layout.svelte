@@ -34,17 +34,17 @@
         {@render children()}
     </div>
     <nav>
-        {#if previousQuestionHref !== ""}
-            <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
-        {:else}
-            <div></div> <!-- Placeholder -->
-        {/if}
+        <div class="prev-wrapper">
+            {#if previousQuestionHref !== ""}
+                <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
+            {/if}
+        </div>
         <p>Gubi</p>
-        {#if nextQuestionHref !== ""}
-            <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
-        {:else}
-            <div></div> <!-- Placeholder -->
-        {/if}
+        <div class="next-wrapper">
+            {#if nextQuestionHref !== ""}
+                <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
+            {/if}
+        </div>
     </nav>
 </div>
 
@@ -87,5 +87,14 @@
 
     nav, a:any-link {
         color: #c0ddff;
+    }
+
+    nav div {
+        flex: 1;
+    }
+
+    .next-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
     }
 </style>
