@@ -1,4 +1,4 @@
-import { getChosenAnswersForQuestion, validateQuestionForFrontend, putAnswerForQuestion, validateQuestionCorrect, wasAnswerToQuestionCorrect } from "$lib/server/db/answers";
+import { getChosenAnswersForQuestion, putAnswerForQuestion, validateQuestionCorrect, wasAnswerToQuestionCorrect } from "$lib/server/db/answers";
 import { json } from "@sveltejs/kit";
 import { type } from "arktype";
 import type { RequestHandler } from "./$types";
@@ -57,6 +57,6 @@ export const PUT: RequestHandler = withValidatedInput(validateQuestionsPayload, 
 
 	return json({
 		correct: validateQuestionCorrect(question, questionFromRequest),
-		question: validateQuestionForFrontend(question, questionFromRequest)
+		question: question
 	});
 });
