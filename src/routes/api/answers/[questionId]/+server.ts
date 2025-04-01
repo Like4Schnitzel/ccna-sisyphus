@@ -55,6 +55,10 @@ export const PUT: RequestHandler = withValidatedInput(validateQuestionsPayload, 
 		putAnswerForQuestion(locals.userData!.uuid, questionId, questionFromRequest);
 	}
 
+	if (question.type == "mcq") {
+		question.hasMultipleCorrectAnswers = question.answers.filter(f => f.correct).length > 1;
+	}
+
 	return json({
 		correct: validateQuestionCorrect(question, questionFromRequest),
 		question: question

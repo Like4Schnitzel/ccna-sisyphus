@@ -17,6 +17,7 @@ type MCQQuestionDTO = QuestionBase & {
     type: "mcq",
     imgSrc?: string,
     imgAlt?: string,
+    hasMultipleCorrectAnswers?: boolean,
     answers: (TextAnswer | ImgAnswer)[],
 }
 

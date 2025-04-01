@@ -6,6 +6,8 @@ const removeAnswersFromQuestion = (question: QuestionDTO) => {
 	const clonedQuestion = structuredClone(question);
 	switch (clonedQuestion.type) {
 		case "mcq": {
+			clonedQuestion.hasMultipleCorrectAnswers = clonedQuestion.answers.filter(f => f.correct).length > 1;
+
 			for (const answer of clonedQuestion.answers) {
 				answer.correct = undefined;
 			}
