@@ -127,7 +127,7 @@ const putAnswerForQuestion = (userId: string, questionId: number, questionReques
  * @param questionFromRequest question from request
  * @returns question ready for frontend
  */
-const getQuestionForFrontend = (question: QuestionDTO, questionFromRequest: Partial<Question>) => {
+const validateQuestionForFrontend = (question: QuestionDTO, questionFromRequest: Partial<Question>) => {
 	switch (question.type) {
 		case "mcq": {
 			// ty typescript
@@ -234,5 +234,5 @@ export {
 	wasAnswerToQuestionCorrect, 
 	validateQuestionCorrect, 
 	getIncorrectAnswers,
-	getQuestionForFrontend
+	validateQuestionForFrontend
 };
