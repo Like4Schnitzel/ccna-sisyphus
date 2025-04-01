@@ -25,17 +25,17 @@
             submitted = true;
             submitButton.disabled = true;
 
-            const response = fetch(`/api/answers/${question.id}`, {
+            const response = await fetch(`/api/answers/${question.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(question),
-            });
+            }).then(r => r.json());
             
-            for (let i = 0; i < question.answers.length; i++) {
+            for (let i = 0; i < response.question.answers.length; i++) {
                 mcqInputs[i].disabled = true;
-                if (question.answers[i].correct) {
+                if (response.question.answers[i].correct) {
                     inputClasses[i] = "correct";
                 } else {
                     inputClasses[i] = "incorrect";
@@ -43,23 +43,23 @@
             }
             inputClasses = inputClasses;
 
-            submissionCorrect = (await (await response).json()).correct;
+            submissionCorrect = response.correct;
         } else if (question.type === "match") {
             submitted = true;
             submitButton.disabled = true;
 
-            fetch(`/api/answers/${question.id}`, {
+            const response = await fetch(`/api/answers/${question.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(question),
-            });
+            }).then(r => r.json());
 
             submissionCorrect = true;
             for (let i = 0; i < question.staticOptions.length; i++) {
                 matchSelectsAtSubmit.push(question.staticOptions[i].matchedTo);
-                if (matchSelectsAtSubmit[i] === question.staticOptions[i].correctMatch) {
+                if (matchSelectsAtSubmit[i] === response.question.staticOptions[i].correctMatch) {
                     inputClasses[i] = "correct";
                 } else {
                     submissionCorrect = false;

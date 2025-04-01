@@ -5,12 +5,12 @@ type QuestionBase = {
 
 type TextAnswer = {
     text: string,
-    correct: boolean
+    correct: boolean | undefined
 }
 
 type ImgAnswer = {
     imgSrc: string,
-    correct: boolean
+    correct: boolean | undefined
 }
 
 type MCQQuestionDTO = QuestionBase & {

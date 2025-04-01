@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { questions } from "$lib/components";
+    const { data } = $props();
+    const { questions } = data;
 
     let searchValue = $state("");
     let filteredQuestions = $derived(questions.filter(q => `${q.id}. ${q.text.toLowerCase()}`.includes(searchValue.toLowerCase())));
