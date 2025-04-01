@@ -8,5 +8,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.userData = await getUserForSession(sessionCookie);
 	}
 
+	const pathMatch = event.url.pathname.match(/^\/questions\/(\d+)$/);
+	if (pathMatch) {
+		event.locals.currentQuestion = Number.parseInt(pathMatch[1]);
+	} else {
+		event.locals.currentQuestion = null;
+	}
+
 	return await resolve(event);
 }

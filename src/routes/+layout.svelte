@@ -1,16 +1,29 @@
 <script lang="ts">
     import { setContext } from 'svelte';
+    import { questions } from '$lib/components';
     let { children, data } = $props();
 
     // set userData context if we're signed in
     if (data.userData) {
         setContext("userData", data.userData);
     }
+
+    let currentQuestionIndex = $state(questions.findIndex((q) => q.id === data.currentQuestion));
+    let previousQuestion, nextQuestion;
+    let previousQuestionHref = $state("");
+    let nextQuestionHref = $state("");
+    if (currentQuestionIndex >= 0) {
+        previousQuestion = questions[currentQuestionIndex - 1]?.id;
+        nextQuestion = questions[currentQuestionIndex + 1]?.id;
+
+        previousQuestionHref = previousQuestion !== undefined ? `/questions/${previousQuestion}` : "";
+        nextQuestionHref = nextQuestion !== undefined ? `/questions/${nextQuestion}` : "";
+    }
 </script>
 
 <div class="main">
     <header>
-        <h1>Quiz App</h1>
+        <h1><a href="/" data-sveltekit-preload-data data-sveltekit-reload>Quiz App</a></h1>
         {#if data.userData}
             <a href="/logout">{data.userData.username}</a>
         {:else}
@@ -20,9 +33,19 @@
     <div class="content">
         {@render children()}
     </div>
-    <footer>
+    <nav>
+        <div class="prev-wrapper">
+            {#if previousQuestionHref !== ""}
+                <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
+            {/if}
+        </div>
         <p>Gubi</p>
-    </footer>
+        <div class="next-wrapper">
+            {#if nextQuestionHref !== ""}
+                <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
+            {/if}
+        </div>
+    </nav>
 </div>
 
 <style>
@@ -44,12 +67,14 @@
         flex-direction: column;
     }
 
-    header, footer {
+    header, nav {
         background-color: #111;
         color: azure;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-left: 2%;
+        padding-right: 2%;
     }
 
     .content {
@@ -60,7 +85,16 @@
         margin: 0;
     }
 
-    footer, a:any-link {
+    nav, a:any-link {
         color: #c0ddff;
+    }
+
+    nav div {
+        flex: 1;
+    }
+
+    .next-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
     }
 </style>
