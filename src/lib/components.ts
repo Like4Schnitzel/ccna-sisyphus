@@ -2,7 +2,7 @@ import type { QuestionDTO } from "./types.ts";
 
 export const questions: QuestionDTO[] = [
     {
-        "id": 0,
+        "id": 1,
         "text": "Which connector is used with twisted-pair cabling in an Ethernet LAN?",
         "type": "mcq",
         "answers": [
@@ -29,7 +29,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 1,
+        "id": 2,
         "text": "Refer to the exhibit. Host B on subnet Teachers transmits a packet to host D on subnet Students. Which Layer 2 and Layer 3 addresses are contained in the PDUs that are transmitted from host B to the router?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i204796v11n1_204796-topology-arp.png",
@@ -54,7 +54,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 2,
+        "id": 3,
         "text": "Three bank employees are using the corporate network. The first employee uses a web browser to view a company web page in order to read some announcements. The second employee accesses the corporate database to perform some financial transactions. The third employee participates in an important live audio conference with other corporate managers in branch offices. If QoS is implemented on this network, what will be the priorities from highest to lowest of the different data types?",
         "type": "mcq",
         "answers": [
@@ -77,7 +77,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 3,
+        "id": 4,
         "text": "What are proprietary protocols?",
         "type": "mcq",
         "answers": [
@@ -100,7 +100,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 4,
+        "id": 5,
         "text": "What will happen if the default gateway address is incorrectly configured on a host?",
         "type": "mcq",
         "answers": [
@@ -127,7 +127,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 5,
+        "id": 6,
         "text": "Which scenario describes a function provided by the transport layer?",
         "type": "mcq",
         "answers": [
@@ -150,7 +150,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 6,
+        "id": 7,
         "text": "Which value, that is contained in an IPv4 header field, is decremented by each router that receives a packet?",
         "type": "mcq",
         "answers": [
@@ -173,7 +173,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 7,
+        "id": 8,
         "text": "Which two statements describe features of an IPv4 routing table on a router? (Choose two.)​",
         "type": "mcq",
         "answers": [
@@ -204,7 +204,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 8,
+        "id": 9,
         "text": "What attribute of a NIC would place it at the data link layer of the OSI model?",
         "type": "mcq",
         "answers": [
@@ -231,7 +231,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 9,
+        "id": 10,
         "text": "A network administrator needs to keep the user ID, password, and session contents private when establishing remote CLI connectivity with a switch to manage it. Which access method should be chosen?",
         "type": "mcq",
         "answers": [
@@ -254,7 +254,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 10,
+        "id": 11,
         "text": "Which two statements accurately describe an advantage or a disadvantage when deploying NAT for IPv4 in a network? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -285,7 +285,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 11,
+        "id": 12,
         "text": "What technique is used with UTP cable to help protect against signal interference from crosstalk?",
         "type": "mcq",
         "answers": [
@@ -308,7 +308,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 12,
+        "id": 13,
         "text": "What are two problems that can be caused by a large number of ARP request and reply messages? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -335,7 +335,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 13,
+        "id": 14,
         "type": "match",
         "text": "Match the characteristic to the category.",
         "movableOptions": [
@@ -370,7 +370,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 14,
+        "id": 15,
         "type": "match",
         "text": "Match the header field with the appropriate layer of the OSI model.",
         "movableOptions": [
@@ -410,7 +410,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 15,
+        "id": 16,
         "text": "A host is trying to send a packet to a device on a remote LAN segment, but there are currently no mappings in its ARP cache. How will the device obtain a destination MAC address?",
         "type": "mcq",
         "answers": [
@@ -437,7 +437,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 16,
+        "id": 17,
         "text": "What are two ICMPv6 messages that are not present in ICMP for IPv4? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -468,7 +468,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 17,
+        "id": 18,
         "text": "What are the three parts of an IPv6 global unicast address? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -495,7 +495,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 18,
+        "id": 19,
         "text": "Which subnet would include the address 192.168.1.96 as a usable host address?",
         "type": "mcq",
         "answers": [
@@ -518,7 +518,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 19,
+        "id": 20,
         "text": "Refer to the exhibit. A company uses the address block of 128.107.0.0/16 for its network. What subnet mask would provide the maximum number of equal size subnets while providing enough host addresses for each subnet in the exhibit?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i207609v1n1_207609.png",
@@ -547,7 +547,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 20,
+        "id": 21,
         "type": "match",
         "text": "Refer to the exhibit. Match the network with the correct IP address and prefix that will satisfy the usable host addressing requirements for each network.",
         "staticOptions": [
@@ -576,7 +576,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 21,
+        "id": 22,
         "text": "How does the service password-encryption command enhance password security on Cisco routers and switches?",
         "type": "mcq",
         "answers": [
@@ -599,7 +599,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 22,
+        "id": 23,
         "type": "match",
         "text": "Match the firewall function to the type of threat protection it provides to the network.",
         "staticOptions": [
@@ -628,7 +628,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 23,
+        "id": 24,
         "type": "match",
         "text": "Match each description to its corresponding term.",
         "staticOptions": [
@@ -652,7 +652,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 24,
+        "id": 25,
         "text": "A disgruntled employee is using some free wireless networking tools to determine information about the enterprise wireless networks. This person is planning on using this information to hack the wireless network. What type of attack is this?",
         "type": "mcq",
         "answers": [
@@ -675,7 +675,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 25,
+        "id": 26,
         "text": "A company has a file server that shares a folder named Public. The network security policy specifies that the Public folder is assigned Read-Only rights to anyone who can log into the server while the Edit rights are assigned only to the network admin group. Which component is addressed in the AAA network service framework?",
         "type": "mcq",
         "answers": [
@@ -698,7 +698,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 26,
+        "id": 27,
         "text": "Why would a Layer 2 switch need an IP address?",
         "type": "mcq",
         "answers": [
@@ -721,7 +721,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 27,
+        "id": 28,
         "text": "Refer to the exhibit. An administrator is trying to configure the switch but receives the error message that is displayed in the exhibit. What is the problem?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i208399v1n1_question_1.png",
@@ -746,7 +746,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 28,
+        "id": 29,
         "text": "What command can be used on a Windows PC to see the IP configuration of that computer?",
         "type": "mcq",
         "answers": [
@@ -769,7 +769,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 29,
+        "id": 30,
         "text": "What is an advantage to using a protocol that is defined by an open standard?",
         "type": "mcq",
         "answers": [
@@ -792,7 +792,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 30,
+        "id": 31,
         "text": "What are two functions that are provided by the network layer? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -819,7 +819,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 31,
+        "id": 32,
         "text": "Which two commands can be used on a Windows host to display the routing table? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -846,7 +846,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 32,
+        "id": 33,
         "text": "During the process of forwarding traffic, what will the router do immediately after matching the destination IP address to a network on a directly connected routing table entry?",
         "type": "mcq",
         "answers": [
@@ -869,7 +869,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 33,
+        "id": 34,
         "text": "Which two statements are correct in a comparison of IPv4 and IPv6 packet headers? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -896,7 +896,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 34,
+        "id": 35,
         "type": "match",
         "text": "Match the description to the IPv6 addressing component.",
         "staticOptions": [
@@ -920,7 +920,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 35,
+        "id": 36,
         "text": "Two pings were issued from a host on a local network. The first ping was issued to the IP address of the default gateway of the host and it failed. The second ping was issued to the IP address of a host outside the local network and it was successful. What is a possible cause for the failed ping?",
         "type": "mcq",
         "answers": [
@@ -943,7 +943,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 36,
+        "id": 37,
         "type": "match",
         "text": "Match each description with the corresponding TCP mechanism.",
         "staticOptions": [
@@ -972,7 +972,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 37,
+        "id": 38,
         "type": "match",
         "text": "Match a statement to the related network model.",
         "movableOptions": [
@@ -999,7 +999,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 38,
+        "id": 39,
         "text": "What two pieces of information are displayed in the output of the show ip interface brief command? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1030,7 +1030,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 39,
+        "id": 40,
         "text": "Refer to the exhibit. PC1 issues an ARP request because it needs to send a packet to PC2. In this scenario, what will happen next?​",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i209824v1n1_209824.png",
@@ -1059,7 +1059,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 40,
+        "id": 41,
         "type": "match",
         "text": "Match the characteristic to the forwarding method.",
         "movableOptions": [
@@ -1094,7 +1094,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 41,
+        "id": 42,
         "text": "A network administrator notices that some newly installed Ethernet cabling is carrying corrupt and distorted data signals. The new cabling was installed in the ceiling close to fluorescent lights and electrical equipment. Which two factors may interfere with the copper cabling and result in signal distortion and data corruption? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1121,7 +1121,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 42,
+        "id": 43,
         "text": "A network administrator is designing the layout of a new wireless network. Which three areas of concern should be accounted for when building a wireless network? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -1152,7 +1152,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 43,
+        "id": 44,
         "text": "What method is used to manage contention-based access on a wireless network?",
         "type": "mcq",
         "answers": [
@@ -1175,7 +1175,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 44,
+        "id": 45,
         "text": "Which two statements are correct about MAC and IP addresses during data transmission if NAT is not involved? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1202,7 +1202,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 45,
+        "id": 46,
         "type": "match",
         "text": "Match the type of threat with the cause.",
         "staticOptions": [
@@ -1231,7 +1231,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 46,
+        "id": 47,
         "text": "What are two features of ARP? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1258,7 +1258,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 47,
+        "id": 48,
         "text": "A client is using SLAAC to obtain an IPv6 address for its interface. After an address has been generated and applied to the interface, what must the client do before it can begin to use this IPv6 address?",
         "type": "mcq",
         "answers": [
@@ -1281,7 +1281,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 48,
+        "id": 49,
         "text": "Which switching method drops frames that fail the FCS check?",
         "type": "mcq",
         "answers": [
@@ -1304,7 +1304,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 49,
+        "id": 50,
         "text": "An organization is assigned an IPv6 address block of 2001:db8:0:ca00::/56. How many subnets can be created without using bits in the interface ID space?",
         "type": "mcq",
         "answers": [
@@ -1327,7 +1327,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 50,
+        "id": 51,
         "text": "A group of Windows PCs in a new subnet has been added to an Ethernet network. When testing the connectivity, a technician finds that these PCs can access local network resources but not the Internet resources. To troubleshoot the problem, the technician wants to initially confirm the IP address and DNS configurations on the PCs, and also verify connectivity to the local router. Which three Windows CLI commands and utilities will provide the necessary information? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -1362,7 +1362,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 51,
+        "id": 52,
         "text": "Users are reporting longer delays in authentication and in accessing network resources during certain time periods of the week. What kind of information should network engineers check to find out if this situation is part of a normal network behavior?",
         "type": "mcq",
         "answers": [
@@ -1385,7 +1385,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 52,
+        "id": 53,
         "text": "Which type of security threat would be responsible if a spreadsheet add-on disables the local software firewall?",
         "type": "mcq",
         "answers": [
@@ -1408,7 +1408,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 53,
+        "id": 54,
         "text": "A new network administrator has been asked to enter a banner message on a Cisco device. What is the fastest way a network administrator could test whether the banner is properly configured?",
         "type": "mcq",
         "answers": [
@@ -1435,7 +1435,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 54,
+        "id": 55,
         "type": "match",
         "text": "Match the application protocols to the correct transport protocols.",
         "movableOptions": [
@@ -1466,7 +1466,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 55,
+        "id": 56,
         "text": "An administrator defined a local user account with a secret password on router R1 for use with SSH. Which three additional steps are required to configure R1 to accept only encrypted SSH connections? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -1497,7 +1497,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 56,
+        "id": 57,
         "text": "Which information does the show startup-config command display?",
         "type": "mcq",
         "answers": [
@@ -1520,7 +1520,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 57,
+        "id": 58,
         "text": "A user sends an HTTP request to a web server on a remote network. During encapsulation for this request, what information is added to the address field of a frame to indicate the destination?",
         "type": "mcq",
         "answers": [
@@ -1543,7 +1543,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 58,
+        "id": 59,
         "type": "match",
         "text": "Match each description with an appropriate IP address.",
         "staticOptions": [
@@ -1572,7 +1572,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 59,
+        "id": 60,
         "text": "What two ICMPv6 message types must be permitted through IPv6 access control lists to allow resolution of Layer 3 addresses to Layer 2 MAC addresses? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1603,7 +1603,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 60,
+        "id": 61,
         "text": "What is the consequence of configuring a router with the ipv6 unicast-routing global configuration command?",
         "type": "mcq",
         "answers": [
@@ -1626,7 +1626,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 61,
+        "id": 62,
         "text": "What mechanism is used by a router to prevent a received IPv4 packet from traveling endlessly on a network?",
         "type": "mcq",
         "answers": [
@@ -1649,7 +1649,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 62,
+        "id": 63,
         "text": "What is one main characteristic of the data link layer?",
         "type": "mcq",
         "answers": [
@@ -1672,7 +1672,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 63,
+        "id": 64,
         "type": "match",
         "text": "Match each item to the type of topology diagram on which it is typically identified.",
         "movableOptions": [
@@ -1695,7 +1695,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 64,
+        "id": 65,
         "text": "Which range of link-local addresses can be assigned to an IPv6-enabled interface?​",
         "type": "mcq",
         "answers": [
@@ -1718,7 +1718,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 65,
+        "id": 66,
         "text": "Refer to the exhibit. If PC1 is sending a packet to PC2 and routing has been configured between the two routers, what will R1 do with the Ethernet frame header attached by PC1?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i271152v1n1_271152.png",
@@ -1743,7 +1743,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 66,
+        "id": 67,
         "text": "Refer to the exhibit. Which protocol was responsible for building the table that is shown?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i271168v4n1_Item-271168.png",
@@ -1768,7 +1768,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 67,
+        "id": 68,
         "text": "An IPv6 enabled device sends a data packet with the destination address of FF02::2. What is the target of this packet?​",
         "type": "mcq",
         "answers": [
@@ -1791,7 +1791,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 68,
+        "id": 69,
         "text": "A network technician is researching the use of fiber optic cabling in a new technology center. Which two issues should be considered before implementing fiber optic media? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1818,7 +1818,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 69,
+        "id": 70,
         "text": "What are two characteristics shared by TCP and UDP? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1849,7 +1849,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 70,
+        "id": 71,
         "text": "What are two characteristics of IP? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1876,7 +1876,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 71,
+        "id": 72,
         "text": "What two security solutions are most likely to be used only in a corporate environment? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -1903,7 +1903,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 72,
+        "id": 73,
         "text": "Refer to the exhibit. What three facts can be determined from the viewable output of the show ip interface brief command? (Choose three.)",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274067v1n1_274067.png",
@@ -1936,7 +1936,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 73,
+        "id": 74,
         "text": "What is a benefit of using cloud computing in networking?",
         "type": "mcq",
         "answers": [
@@ -1959,7 +1959,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 74,
+        "id": 75,
         "text": "An employee of a large corporation remotely logs into the company using the appropriate username and password. The employee is attending an important video conference with a customer concerning a large sale. It is important for the video quality to be excellent during the meeting. The employee is unaware that after a successful login, the connection to the company ISP failed. The secondary connection, however, activated within seconds. The disruption was not noticed by the employee or other employees.What three network characteristics are described in this scenario? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -1990,7 +1990,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 75,
+        "id": 76,
         "text": "Which two traffic types use the Real-Time Transport Protocol (RTP)? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -2017,7 +2017,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 76,
+        "id": 77,
         "text": "Which two statements describe how to assess traffic flow patterns and network traffic types using a protocol analyzer? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -2044,7 +2044,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 77,
+        "id": 78,
         "text": "Refer to the exhibit. What is wrong with the displayed termination?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274300v1n1_209630.png",
@@ -2069,7 +2069,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 78,
+        "id": 79,
         "text": "A wired laser printer is attached to a home computer. That printer has been shared so that other computers on the home network can also use the printer. What networking model is in use?",
         "type": "mcq",
         "answers": [
@@ -2092,7 +2092,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 79,
+        "id": 80,
         "text": "When a switch configuration includes a user-defined error threshold on a per-port basis, to which switching method will the switch revert when the error threshold is reached?",
         "type": "mcq",
         "answers": [
@@ -2115,7 +2115,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 80,
+        "id": 81,
         "text": "A user is attempting to access http://www.cisco.com/ without success. Which two configuration values must be set on the host to allow this access? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -2142,7 +2142,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 81,
+        "id": 82,
         "text": "What subnet mask is needed if an IPv4 network has 40 devices that need IP addresses and address space is not to be wasted?",
         "type": "mcq",
         "answers": [
@@ -2169,7 +2169,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 82,
+        "id": 83,
         "text": "A network administrator wants to have the same subnet mask for three subnetworks at a small site. The site has the following networks and numbers of devices:Subnetwork A: IP phones – 10 addressesSubnetwork B: PCs – 8 addresses Subnetwork C: Printers – 2 addresses What single subnet mask would be appropriate to use for the three subnetworks?",
         "type": "mcq",
         "answers": [
@@ -2192,7 +2192,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 83,
+        "id": 84,
         "text": "A network administrator wants to have the same network mask for all networks at a particular small site. The site has the following networks and number of devices:IP phones – 22 addressesPCs – 20 addresses neededPrinters – 2 addresses neededScanners – 2 addresses neededThe network administrator has deemed that 192.168.10.0/24 is to be the network used at this site. Which single subnet mask would make the most efficient use of the available addresses to use for the four subnetworks?",
         "type": "mcq",
         "answers": [
@@ -2223,7 +2223,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 84,
+        "id": 85,
         "text": "Refer to the exhibit. Which two network addresses can be assigned to the network containing 10 hosts? Your answers should waste the fewest addresses, not reuse addresses that are already assigned, and stay within the 10.18.10.0/24 range of addresses. (Choose two.)",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274518v1n1_247518.png",
@@ -2256,7 +2256,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 85,
+        "id": 86,
         "text": "Refer to the exhibit. The network administrator has assigned the LAN of LBMISS an address range of 192.168.10.0. This address range has been subnetted using a /29 prefix. In order to accommodate a new building, the technician has decided to use the fifth subnet for configuring the new network (subnet zero is the first subnet). By company policies, the router interface is always assigned the first usable host address and the workgroup server is given the last usable host address. Which configuration should be entered into the properties of the workgroup server to allow connectivity to the Internet?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274544v1n1_209840.png",
@@ -2285,7 +2285,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 86,
+        "id": 87,
         "text": "What three requirements are defined by the protocols used in network communcations to allow message transmission across a network? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -2316,7 +2316,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 87,
+        "id": 88,
         "text": "Refer to the exhibit. If host A sends an IP packet to host B, what will the destination address be in the frame when it leaves host A?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i274590v1n1_274590.png",
@@ -2349,7 +2349,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 88,
+        "id": 89,
         "text": "What is the purpose of the TCP sliding window?",
         "type": "mcq",
         "answers": [
@@ -2372,7 +2372,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 89,
+        "id": 90,
         "text": "Data is being sent from a source PC to a destination server. Which three statements correctly describe the function of TCP or UDP in this situation? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -2403,7 +2403,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 90,
+        "id": 91,
         "text": "A technician can ping the IP address of the web server of a remote company but cannot successfully ping the URL address of the same web server. Which software utility can the technician use to diagnose the problem?",
         "type": "mcq",
         "answers": [
@@ -2426,7 +2426,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 91,
+        "id": 92,
         "text": "Refer to the exhibit. The switches are in their default configuration. Host A needs to communicate with host D, but host A does not have the MAC address for its default gateway. Which network hosts will receive the ARP request sent by host A?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275353v1n1_275353.png",
@@ -2459,7 +2459,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 92,
+        "id": 93,
         "text": "Refer to the exhibit. If Host1 were to transfer a file to the server, what layers of the TCP/IP model would be used?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275370v1n1_275370.png",
@@ -2492,7 +2492,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 93,
+        "id": 94,
         "text": "A user is executing a tracert to a remote device. At what point would a router, which is in the path to the destination device, stop forwarding the packet?",
         "type": "mcq",
         "answers": [
@@ -2519,7 +2519,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 94,
+        "id": 95,
         "type": "match",
         "text": "Match each type of frame field to its function.",
         "staticOptions": [
@@ -2548,7 +2548,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 95,
+        "id": 96,
         "text": "What is an advantage for small organizations of adopting IMAP instead of POP?",
         "type": "mcq",
         "answers": [
@@ -2571,7 +2571,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 96,
+        "id": 97,
         "text": "Refer to the exhibit. On the basis of the output, which two statements about network connectivity are correct? (Choose two.)",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i275429v1n1_chapter-9-wan-images2.jpg",
@@ -2600,7 +2600,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 97,
+        "id": 98,
         "text": "What are three characteristics of the CSMA/CD process? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -2631,7 +2631,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 98,
+        "id": 99,
         "text": "Which three layers of the OSI model map to the application layer of the TCP/IP model? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -2662,7 +2662,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 99,
+        "id": 100,
         "text": "Users report that the network access is slow. After questioning the employees, the network administrator learned that one employee downloaded a third-party scanning program for the printer. What type of malware might be introduced that causes slow performance of the network?",
         "type": "mcq",
         "answers": [
@@ -2685,7 +2685,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 100,
+        "id": 101,
         "text": "What are the two most effective ways to defend against malware? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -2716,7 +2716,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 101,
+        "id": 102,
         "text": "Refer to the exhibit. The IP address of which device interface should be used as the default gateway setting of host H1?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i284612v1n1_dg-item.jpg",
@@ -2741,7 +2741,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 102,
+        "id": 103,
         "text": "Which wireless technology has low-power and data rate requirements making it popular in home automation applications?",
         "type": "mcq",
         "answers": [
@@ -2764,7 +2764,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 103,
+        "id": 104,
         "text": "Which layer of the TCP/IP model provides a route to forward messages through an internetwork?",
         "type": "mcq",
         "answers": [
@@ -2787,7 +2787,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 104,
+        "id": 105,
         "text": "Which type of server relies on record types such as A, NS, AAAA, and MX in order to provide services?",
         "type": "mcq",
         "answers": [
@@ -2810,7 +2810,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 105,
+        "id": 106,
         "text": "Refer to the exhibit. A network engineer has been given the network address of 192.168.99.0 and a subnet mask of 255.255.255.192 to subnet across the four networks shown. How many total host addresses are unused across all four subnets?",
         "type": "mcq",
         "imgSrc": "https://www.netacad.com/content/itn/1.0/courses/content/final-exam/en-US/assets/i304957v1n1_209418.png",
@@ -2839,7 +2839,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 106,
+        "id": 107,
         "text": "What is the subnet ID associated with the IPv6 address 2001:DA48:FC5:A4:3D1B::1/64?",
         "type": "mcq",
         "answers": [
@@ -2862,7 +2862,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 107,
+        "id": 108,
         "text": "A technician with a PC is using multiple applications while connected to the Internet. How is the PC able to keep track of the data flow between multiple application sessions and have each application receive the correct packet flows?",
         "type": "mcq",
         "answers": [
@@ -2885,7 +2885,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 108,
+        "id": 109,
         "text": "What would be the interface ID of an IPv6 enabled interface with a MAC address of 1C-6F-65-C2-BD-F8 when the interface ID is generated by using the EUI-64 process?",
         "type": "mcq",
         "answers": [
@@ -2908,7 +2908,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 109,
+        "id": 110,
         "text": "What is a function of the data link layer?",
         "type": "mcq",
         "answers": [
@@ -2931,7 +2931,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 110,
+        "id": 111,
         "text": "Which two protocols operate at the top layer of the TCP/IP protocol suite? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -2962,7 +2962,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 111,
+        "id": 112,
         "text": "A user is complaining that an external web page is taking longer than normal to load.The web page does eventually load on the user machine. Which tool should the technician use with administrator privileges in order to locate where the issue is in the network?",
         "type": "mcq",
         "answers": [
@@ -2985,7 +2985,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 112,
+        "id": 113,
         "text": "The global configuration command ip default-gateway 172.16.100.1 is applied to a switch. What is the effect of this command?",
         "type": "mcq",
         "answers": [
@@ -3008,7 +3008,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 113,
+        "id": 114,
         "text": "What happens when the transport input ssh command is entered on the switch vty lines?",
         "type": "mcq",
         "answers": [
@@ -3031,7 +3031,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 114,
+        "id": 115,
         "text": "What are two common causes of signal degradation when using UTP cabling? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3058,7 +3058,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 115,
+        "id": 116,
         "text": "What are three commonly followed standards for constructing and installing cabling? (Choose three.)",
         "type": "mcq",
         "answers": [
@@ -3089,7 +3089,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 116,
+        "id": 117,
         "text": "Which frame field is created by a source node and used by a destination node to ensure that a transmitted data signal has not been altered by interference, distortion, or signal loss?",
         "type": "mcq",
         "answers": [
@@ -3116,7 +3116,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 117,
+        "id": 118,
         "text": "What are two primary responsibilities of the Ethernet MAC sublayer? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3143,7 +3143,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 118,
+        "id": 119,
         "text": "Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3170,7 +3170,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 119,
+        "id": 120,
         "text": "Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3197,7 +3197,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 120,
+        "id": 121,
         "text": "Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3219,33 +3219,6 @@ export const questions: QuestionDTO[] = [
             },
             {
                 "text": "responsible for internal structure of Ethernet frame",
-                "correct": false
-            }
-        ]
-    },
-    {
-        "id": 121,
-        "text": "Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "responsible for internal structure of Ethernet frame",
-                "correct": true
-            },
-            {
-                "text": "implements trailer with frame check sequence for error detection",
-                "correct": true
-            },
-            {
-                "text": "adds Ethernet control information to network protocol data",
-                "correct": false
-            },
-            {
-                "text": "places information in the Ethernet frame that identifies which network layer protocol is being encapsulated by the frame",
-                "correct": false
-            },
-            {
-                "text": "enables IPv4 and IPv6 to utilize the same physical medium",
                 "correct": false
             }
         ]
@@ -3256,6 +3229,33 @@ export const questions: QuestionDTO[] = [
         "type": "mcq",
         "answers": [
             {
+                "text": "responsible for internal structure of Ethernet frame",
+                "correct": true
+            },
+            {
+                "text": "implements trailer with frame check sequence for error detection",
+                "correct": true
+            },
+            {
+                "text": "adds Ethernet control information to network protocol data",
+                "correct": false
+            },
+            {
+                "text": "places information in the Ethernet frame that identifies which network layer protocol is being encapsulated by the frame",
+                "correct": false
+            },
+            {
+                "text": "enables IPv4 and IPv6 to utilize the same physical medium",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "text": "Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
+        "type": "mcq",
+        "answers": [
+            {
                 "text": "implements CSMA/CD over legacy shared half-duplex media",
                 "correct": true
             },
@@ -3278,7 +3278,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 123,
+        "id": 124,
         "text": "Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3305,7 +3305,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 124,
+        "id": 125,
         "text": "Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3332,7 +3332,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 125,
+        "id": 126,
         "text": "Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3359,7 +3359,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 126,
+        "id": 127,
         "text": "Which two functions are performed at the MAC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3386,7 +3386,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 127,
+        "id": 128,
         "text": "Which two functions are performed at the LLC sublayer of the OSI Data Link Layer to facilitate Ethernet communication? (Choose two.)",
         "type": "mcq",
         "answers": [
@@ -3413,7 +3413,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 128,
+        "id": 129,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 4 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3436,7 +3436,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 129,
+        "id": 130,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 61 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3459,7 +3459,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 130,
+        "id": 131,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 200 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3482,7 +3482,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 131,
+        "id": 132,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 25 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3505,7 +3505,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 132,
+        "id": 133,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 200 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3528,7 +3528,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 133,
+        "id": 134,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 10 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3551,7 +3551,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 134,
+        "id": 135,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 90 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3574,7 +3574,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 135,
+        "id": 136,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 4 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3597,7 +3597,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 136,
+        "id": 137,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 61 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3620,7 +3620,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 137,
+        "id": 138,
         "text": "A network administrator is adding a new LAN to a branch office. The new LAN must support 4 connected devices. What is the smallest network mask that the network administrator can use for the new network?",
         "type": "mcq",
         "answers": [
@@ -3643,7 +3643,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 138,
+        "id": 139,
         "text": "A client packet is received by a server. The packet has a destination port number of 53. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3666,7 +3666,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 139,
+        "id": 140,
         "text": "A client packet is received by a server. The packet has a destination port number of 143. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3689,7 +3689,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 140,
+        "id": 141,
         "text": "A client packet is received by a server. The packet has a destination port number of 67. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3712,7 +3712,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 141,
+        "id": 142,
         "text": "A client packet is received by a server. The packet has a destination port number of 69. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3735,7 +3735,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 142,
+        "id": 143,
         "text": "A client packet is received by a server. The packet has a destination port number of 21. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3758,7 +3758,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 143,
+        "id": 144,
         "text": "A client packet is received by a server. The packet has a destination port number of 69. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3781,7 +3781,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 144,
+        "id": 145,
         "text": "A client packet is received by a server. The packet has a destination port number of 21. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3804,7 +3804,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 145,
+        "id": 146,
         "text": "A client packet is received by a server. The packet has a destination port number of 80. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3827,7 +3827,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 146,
+        "id": 147,
         "text": "A client packet is received by a server. The packet has a destination port number of 22. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3850,7 +3850,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 147,
+        "id": 148,
         "text": "A client packet is received by a server. The packet has a destination port number of 110. What service is the client requesting?",
         "type": "mcq",
         "answers": [
@@ -3873,7 +3873,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 148,
+        "id": 149,
         "text": "What service is provided by POP3?",
         "type": "mcq",
         "answers": [
@@ -3896,7 +3896,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 149,
+        "id": 150,
         "text": "What service is provided by Internet Messenger?",
         "type": "mcq",
         "answers": [
@@ -3919,7 +3919,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 150,
+        "id": 151,
         "text": "What service is provided by SMTP?",
         "type": "mcq",
         "answers": [
@@ -3942,7 +3942,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 151,
+        "id": 152,
         "text": "What service is provided by HTTPS?",
         "type": "mcq",
         "answers": [
@@ -3965,7 +3965,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 152,
+        "id": 153,
         "text": "What service is provided by DHCP?",
         "type": "mcq",
         "answers": [
@@ -3988,7 +3988,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 153,
+        "id": 154,
         "text": "What service is provided by HTTP?",
         "type": "mcq",
         "answers": [
@@ -4011,7 +4011,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 154,
+        "id": 155,
         "text": "What service is provided by BOOTP?",
         "type": "mcq",
         "answers": [
@@ -4034,7 +4034,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 155,
+        "id": 156,
         "text": "What service is provided by HTTP?",
         "type": "mcq",
         "answers": [
@@ -4057,7 +4057,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 156,
+        "id": 157,
         "text": "What service is provided by FTP?",
         "type": "mcq",
         "answers": [
@@ -4080,7 +4080,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 157,
+        "id": 158,
         "text": "What service is provided by DNS?",
         "type": "mcq",
         "answers": [
@@ -4103,7 +4103,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 158,
+        "id": 159,
         "text": "What characteristic describes a virus?",
         "type": "mcq",
         "answers": [
@@ -4126,7 +4126,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 159,
+        "id": 160,
         "text": "What characteristic describes a Trojan horse?",
         "type": "mcq",
         "answers": [
@@ -4149,7 +4149,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 160,
+        "id": 161,
         "text": "What characteristic describes spyware?",
         "type": "mcq",
         "answers": [
@@ -4172,7 +4172,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 161,
+        "id": 162,
         "text": "What characteristic describes adware?",
         "type": "mcq",
         "answers": [
@@ -4195,7 +4195,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 162,
+        "id": 163,
         "text": "What characteristic describes a DoS attack?",
         "type": "mcq",
         "answers": [
@@ -4218,7 +4218,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 163,
+        "id": 164,
         "text": "What characteristic describes identity theft?",
         "type": "mcq",
         "answers": [
@@ -4241,7 +4241,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 164,
+        "id": 165,
         "text": "What characteristic describes a VPN?",
         "type": "mcq",
         "answers": [
@@ -4264,7 +4264,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 165,
+        "id": 166,
         "text": "What characteristic describes an IPS?",
         "type": "mcq",
         "answers": [
@@ -4287,7 +4287,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 166,
+        "id": 167,
         "text": "What characteristic describes antivirus software?",
         "type": "mcq",
         "answers": [
@@ -4310,7 +4310,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 167,
+        "id": 168,
         "text": "What characteristic describes antispyware?",
         "type": "mcq",
         "answers": [
@@ -4333,7 +4333,7 @@ export const questions: QuestionDTO[] = [
         ]
     },
     {
-        "id": 168,
+        "id": 169,
         "text": "What does the term \"attenuation\" mean in data communication?",
         "type": "mcq",
         "answers": [
@@ -4352,1780 +4352,6 @@ export const questions: QuestionDTO[] = [
             {
                 "text": "strengthening of a signal by a networking device",
                 "correct": false
-            }
-        ]
-    },
-    {
-        "id": 169,
-        "text": "Please rate your motivation to do well in this course:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Motivated",
-                "correct": true
-            },
-            {
-                "text": "Slightly Motivated",
-                "correct": true
-            },
-            {
-                "text": "Motivated",
-                "correct": true
-            },
-            {
-                "text": "Very Motivated",
-                "correct": true
-            },
-            {
-                "text": "Completely Motivated",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 170,
-        "text": "Please indicate how enthusiastic you are about the content of this course and the things you’re learning (or have learned):",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Enthusiastic",
-                "correct": true
-            },
-            {
-                "text": "Slightly Enthusiastic",
-                "correct": true
-            },
-            {
-                "text": "Enthusiastic",
-                "correct": true
-            },
-            {
-                "text": "Very Enthusiastic",
-                "correct": true
-            },
-            {
-                "text": "Completely Enthusiastic",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 171,
-        "text": "Please indicate your interest in this course:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Interested",
-                "correct": true
-            },
-            {
-                "text": "Slightly Interested",
-                "correct": true
-            },
-            {
-                "text": "Interested",
-                "correct": true
-            },
-            {
-                "text": "Very Interested",
-                "correct": true
-            },
-            {
-                "text": "Completely Interested",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 172,
-        "text": "The hands-on lab activities helped me to achieve the stated course objectives.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 173,
-        "text": "Overall, the online course materials were of high quality.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 174,
-        "text": "Having access to equipment in the classroom helped me learn.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 175,
-        "text": "Access:Please rate how easy it is for you to access the course materials online from home:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "I can't access the online course materials from home",
-                "correct": true
-            },
-            {
-                "text": "Difficult",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Difficult",
-                "correct": true
-            },
-            {
-                "text": "Fairly Easy",
-                "correct": true
-            },
-            {
-                "text": "Easy",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 176,
-        "text": "Prepare for Certification exam(s)",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 177,
-        "text": "Learn skills that can be used in your current or a future job",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 178,
-        "text": "Increase your value in the job market",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 179,
-        "text": "Obtain a new job or advance in your current job",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 180,
-        "text": "Continue my education:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Likely",
-                "correct": true
-            },
-            {
-                "text": "Very Likely",
-                "correct": true
-            },
-            {
-                "text": "Don't Know",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 181,
-        "text": "On the job training:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Likely",
-                "correct": true
-            },
-            {
-                "text": "Very Likely",
-                "correct": true
-            },
-            {
-                "text": "Don't Know",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 182,
-        "text": "Take Certification Exam(s):",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Likely",
-                "correct": true
-            },
-            {
-                "text": "Very Likely",
-                "correct": true
-            },
-            {
-                "text": "Don't Know",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 183,
-        "text": "The Cisco Networking Academy Program furthered my goals.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 184,
-        "text": "Rate the reading level of this course:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Much Too Hard",
-                "correct": true
-            },
-            {
-                "text": "Slightly Too Hard",
-                "correct": true
-            },
-            {
-                "text": "About Right",
-                "correct": true
-            },
-            {
-                "text": "Slightly Too Easy",
-                "correct": true
-            },
-            {
-                "text": "Much Too Easy",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 185,
-        "text": "Further your education",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 186,
-        "text": "Packet Tracer activities helped me learn.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 187,
-        "text": "Is your career goal to work in IT and/or networking?",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Yes",
-                "correct": true
-            },
-            {
-                "text": "No",
-                "correct": true
-            },
-            {
-                "text": "Unsure at this time",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 188,
-        "text": "Interactive activities helped me learn.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 189,
-        "text": "Please rate your confidence with the overall skills you learned in this course:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not at all confident",
-                "correct": true
-            },
-            {
-                "text": "A little confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very confident",
-                "correct": true
-            },
-            {
-                "text": "Completely confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer not to answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 190,
-        "text": "Why did you enroll in this course? (Check all that apply.)",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "The course was required by the instructor.",
-                "correct": true
-            },
-            {
-                "text": "To get credit for participation or completion.",
-                "correct": true
-            },
-            {
-                "text": "For self-study or independent study.",
-                "correct": true
-            },
-            {
-                "text": "Because of the Cisco Networking Academy reputation.",
-                "correct": true
-            },
-            {
-                "text": "Because of Cisco's reputation.",
-                "correct": true
-            },
-            {
-                "text": "Some other reason.",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 191,
-        "text": "Are you currently employed in a Technology field?",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Yes, employed in the Networking field",
-                "correct": true
-            },
-            {
-                "text": "Yes, employed in a Technology field, not networking focused",
-                "correct": true
-            },
-            {
-                "text": "No, but employed in a different field",
-                "correct": true
-            },
-            {
-                "text": "No, not employed",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 192,
-        "text": "Develop professional skills (such as written or oral communication, computer literacy, problem-solving, or teamwork).",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All",
-                "correct": true
-            },
-            {
-                "text": "A little",
-                "correct": true
-            },
-            {
-                "text": "Somewhat",
-                "correct": true
-            },
-            {
-                "text": "Quite a bit",
-                "correct": true
-            },
-            {
-                "text": "Very Much",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / NA",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 193,
-        "text": "Please choose the option below that best describes your current goal or motivation for taking Cisco Networking Academy courses:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "To explore a technology career",
-                "correct": true
-            },
-            {
-                "text": "To enter or advance in a career in networking",
-                "correct": true
-            },
-            {
-                "text": "To enter or advance in a technology career (not exclusively networking focused)",
-                "correct": true
-            },
-            {
-                "text": "To gain technology knowledge that can be applied in my current or future non-technology career",
-                "correct": true
-            },
-            {
-                "text": "To further my education",
-                "correct": true
-            },
-            {
-                "text": "For personal use (as a hobby or for home use)",
-                "correct": true
-            },
-            {
-                "text": "Other",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 194,
-        "text": "How would you like to see the course improved? (Check all that apply)",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "More opportunities for hands-on practice to reinforce my understanding of the content",
-                "correct": true
-            },
-            {
-                "text": "More opportunities for feedback with assessments and quizzes",
-                "correct": true
-            },
-            {
-                "text": "More support and guidance to learn the content",
-                "correct": true
-            },
-            {
-                "text": "More technical content",
-                "correct": true
-            },
-            {
-                "text": "More video content",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 195,
-        "text": "The online quizzes helped to prepare me for the chapter exams.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 196,
-        "text": "The exam scores accurately reflected my understanding of the curriculum.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 197,
-        "text": "The videos helped to reinforce key concepts.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 198,
-        "text": "The course curriculum was technically accurate.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 199,
-        "text": "Configure switches and end devices to provide access to local and remote network resources.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 200,
-        "text": "Explain how physical and data link layer protocols support the operation of Ethernet in a switched network.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 201,
-        "text": "Configure routers to enable end-to-end connectivity between remote devices.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 202,
-        "text": "Create IPv4 and IPv6 addressing schemes and verify network connectivity between devices.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 203,
-        "text": "Explain how the upper layers of the OSI model support network applications.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 204,
-        "text": "Configure a small network with security best practices.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Not At All Confident",
-                "correct": true
-            },
-            {
-                "text": "A Little Confident",
-                "correct": true
-            },
-            {
-                "text": "Confident",
-                "correct": true
-            },
-            {
-                "text": "Very Confident",
-                "correct": true
-            },
-            {
-                "text": "Completely Confident",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 205,
-        "text": "Take another Cisco Networking Academy course:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Unlikely",
-                "correct": true
-            },
-            {
-                "text": "Somewhat Likely",
-                "correct": true
-            },
-            {
-                "text": "Very Likely",
-                "correct": true
-            },
-            {
-                "text": "Don't Know",
-                "correct": true
-            },
-            {
-                "text": "Prefer Not To Answer",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 206,
-        "text": "This course as a whole",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 207,
-        "text": "Curriculum Materials:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 208,
-        "text": "Classroom Instruction:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 209,
-        "text": "Access to Equipment / Software:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 210,
-        "text": "Labs:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 211,
-        "text": "Packet Tracer:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 212,
-        "text": "Assessment (including quizzes and exams):",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 213,
-        "text": "Preparedness to teach the course",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Among The Worst",
-                "correct": true
-            },
-            {
-                "text": "A Little Worse",
-                "correct": true
-            },
-            {
-                "text": "About the Same",
-                "correct": true
-            },
-            {
-                "text": "A Little Better",
-                "correct": true
-            },
-            {
-                "text": "Among the Best",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 214,
-        "text": "Clear and easy to understand lessons",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Among The Worst",
-                "correct": true
-            },
-            {
-                "text": "A Little Worse",
-                "correct": true
-            },
-            {
-                "text": "About the Same",
-                "correct": true
-            },
-            {
-                "text": "A Little Better",
-                "correct": true
-            },
-            {
-                "text": "Among the Best",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 215,
-        "text": "Approachability with questions and ideas",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Among The Worst",
-                "correct": true
-            },
-            {
-                "text": "A Little Worse",
-                "correct": true
-            },
-            {
-                "text": "About the Same",
-                "correct": true
-            },
-            {
-                "text": "A Little Better",
-                "correct": true
-            },
-            {
-                "text": "Among the Best",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 216,
-        "text": "Presenting information in multiple ways",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Among The Worst",
-                "correct": true
-            },
-            {
-                "text": "A Little Worse",
-                "correct": true
-            },
-            {
-                "text": "About the Same",
-                "correct": true
-            },
-            {
-                "text": "A Little Better",
-                "correct": true
-            },
-            {
-                "text": "Among the Best",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 217,
-        "text": "Making the topic interesting",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Among The Worst",
-                "correct": true
-            },
-            {
-                "text": "A Little Worse",
-                "correct": true
-            },
-            {
-                "text": "About the Same",
-                "correct": true
-            },
-            {
-                "text": "A Little Better",
-                "correct": true
-            },
-            {
-                "text": "Among the Best",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 218,
-        "text": "I would take another course from this instructor.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 219,
-        "text": "I learned a lot from this instructor.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 220,
-        "text": "This instructor emphasized learning through practice (such as hands-on labs).",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 221,
-        "text": "Please rate how easy it is to use a computer in your classroom:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "I do not have access to a computer in my classroom",
-                "correct": true
-            },
-            {
-                "text": "I have to share my computer with more than one other person",
-                "correct": true
-            },
-            {
-                "text": "I share my computer with one other person",
-                "correct": true
-            },
-            {
-                "text": "I have my own computer to work on during class",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 222,
-        "text": "Videos:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 223,
-        "text": "Interactive activities:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 224,
-        "text": "Packet Tracer Physical Mode activities:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Very Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Dissatisfied",
-                "correct": true
-            },
-            {
-                "text": "Neutral",
-                "correct": true
-            },
-            {
-                "text": "Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Very Satisfied",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 225,
-        "text": "Packet Tracer Physical Mode activities helped me achieve the stated course objectives.",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "Strongly Disagree",
-                "correct": true
-            },
-            {
-                "text": "Disagree",
-                "correct": true
-            },
-            {
-                "text": "Neither Agree Nor Disagree",
-                "correct": true
-            },
-            {
-                "text": "Agree",
-                "correct": true
-            },
-            {
-                "text": "Strongly Agree",
-                "correct": true
-            },
-            {
-                "text": "Don't Know / Not Applicable",
-                "correct": true
-            }
-        ]
-    },
-    {
-        "id": 226,
-        "text": "Please rate how easy it is to use equipment in your classroom:",
-        "type": "mcq",
-        "answers": [
-            {
-                "text": "I don't have access to equipment in my classroom",
-                "correct": true
-            },
-            {
-                "text": "I have to share the equipment with more than one other person",
-                "correct": true
-            },
-            {
-                "text": "I share the equipment with one other person",
-                "correct": true
-            },
-            {
-                "text": "I have my own equipment to work on during class",
-                "correct": true
-            },
-            {
-                "text": "Not Applicable",
-                "correct": true
             }
         ]
     }
