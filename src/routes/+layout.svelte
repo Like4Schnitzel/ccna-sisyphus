@@ -1,6 +1,5 @@
 <script lang="ts">
     import { setContext } from 'svelte';
-    import { questions } from '$lib/components';
     let { children, data } = $props();
 
     // set userData context if we're signed in
@@ -8,17 +7,8 @@
         setContext("userData", data.userData);
     }
 
-    let currentQuestionIndex = $state(questions.findIndex((q) => q.id === data.currentQuestion));
-    let previousQuestion, nextQuestion;
-    let previousQuestionHref = $state("");
-    let nextQuestionHref = $state("");
-    if (currentQuestionIndex >= 0) {
-        previousQuestion = questions[currentQuestionIndex - 1]?.id;
-        nextQuestion = questions[currentQuestionIndex + 1]?.id;
-
-        previousQuestionHref = previousQuestion !== undefined ? `/questions/${previousQuestion}` : "";
-        nextQuestionHref = nextQuestion !== undefined ? `/questions/${nextQuestion}` : "";
-    }
+    let previousQuestionHref = $state(data.previousQuestion !== undefined ? `/questions/${data.previousQuestion}` : "");
+    let nextQuestionHref = $state(data.nextQuestion !== undefined ? `/questions/${data.nextQuestion}` : "");
 </script>
 
 <div class="main">

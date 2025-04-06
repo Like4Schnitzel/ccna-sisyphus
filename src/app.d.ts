@@ -8,7 +8,8 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			userData: User | null,
-			currentQuestion: number | null
+			nextQuestion: number | undefined,
+			previousQuestion: number | undefined
 		}
 		// interface PageData {}
 		// interface PageState {}
