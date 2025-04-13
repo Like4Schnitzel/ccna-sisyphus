@@ -1,6 +1,7 @@
 <script lang="ts">
     import { setContext } from "svelte";
     import { page } from "$app/state";
+    import { goto } from "$app/navigation";
 
     let { children, data } = $props();
 
@@ -17,6 +18,18 @@
             ? `/questions/${page.data.nextQuestion}`
             : "",
     );
+
+    function handleKeyPress(event: KeyboardEvent) {
+        if (event.target instanceof HTMLInputElement) {
+            return;
+        }
+
+        if (event.key === "ArrowLeft") {
+            goto(previousQuestionHref);
+        } else if (event.key == "ArrowRight") {
+            goto(nextQuestionHref);
+        }
+    }
 </script>
 
 <div class="main">
@@ -45,6 +58,8 @@
         </div>
     </nav>
 </div>
+
+<svelte:window onkeyup={handleKeyPress} />
 
 <style>
     :global(body) {

@@ -32,7 +32,7 @@
                 },
                 body: JSON.stringify(question),
             }).then(r => r.json());
-            
+
             for (let i = 0; i < response.question.answers.length; i++) {
                 mcqInputs[i].disabled = true;
                 if (response.question.answers[i].correct) {
@@ -135,73 +135,76 @@
                 <span class="quiz-time">0s</span> <!-- TODO timer -->
             </h1>
         </header>
-        {#if question.type === "mcq"}
-            {#if 'imgSrc' in question}
-                <img src={question.imgSrc} alt={question.imgAlt} class="question-image" />
-            {/if}
-
-            <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
-                {#each question.answers as answer, i (i)}
-                    <li class={inputClasses[i]}>
-                        <label for={i.toString()}>
-                            {#if "text" in answer}
-                                <p>{answer.text}</p>
-                            {:else if "imgSrc" in answer}
-                                <!--svelte-ignore a11y_missing_attribute-->
-                                <!-- the source data doesn't have alt text -->
-                                <img src={answer.imgSrc} />
-                            {/if}
-                            {#if correctAnswersAmount === 1}
-                                <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
-                            {:else}
-                                <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
-                            {/if}
-                        </label>
-                    </li>
-                {/each}
-            </ul>
-        {:else if question.type === "match"}
-            <div class="match" style="--width-division-match: {
-            Math.ceil(Math.sqrt(Math.ceil(question.staticOptions.length / MAX_MATCH_COLUMNS) % MAX_MATCH_COLUMNS + MAX_MATCH_COLUMNS))
-            }">
-                {#each question.staticOptions as option, i (i)}
-                    <div class="match-component-wrapper-wrapper">
-                        <div class="match-component-wrapper">
-                            <div class="match-component {inputClasses[i]}">
-                                <h2>{option.text}</h2>
-                                <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo}>
-                                    <div class="select-selection" slot="selection" let:selection>
-                                        {selection.label}
-                                        {#if submitted}
-                                            {#if selection.value === question.staticOptions[i].correctMatch}
-                                                <div class="correct"></div>
-                                            {:else if selection.value === matchSelectsAtSubmit[i]}
-                                                <div class="incorrect"></div>
+        <form on:submit={submitQuestion} class="question">
+            {#if question.type === "mcq"}
+                {#if 'imgSrc' in question}
+                    <img src={question.imgSrc} alt={question.imgAlt} class="question-image" />
+                {/if}
+    
+                <ul class="mcq" style="--width-division-mcq: {Math.ceil(Math.sqrt(question.answers.length))}">
+                    {#each question.answers as answer, i (i)}
+                        <li class={inputClasses[i]}>
+                            <label for={i.toString()}>
+                                {#if "text" in answer}
+                                    <p>{answer.text}</p>
+                                {:else if "imgSrc" in answer}
+                                    <!--svelte-ignore a11y_missing_attribute-->
+                                    <!-- the source data doesn't have alt text -->
+                                    <img src={answer.imgSrc} />
+                                {/if}
+                                {#if correctAnswersAmount === 1}
+                                    <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} tabindex={1} />
+                                {:else}
+                                    <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} tabindex={1}/>
+                                {/if}
+                            </label>
+                        </li>
+                    {/each}
+                </ul>
+            {:else if question.type === "match"}
+                <div class="match" style="--width-division-match: {
+                Math.ceil(Math.sqrt(Math.ceil(question.staticOptions.length / MAX_MATCH_COLUMNS) % MAX_MATCH_COLUMNS + MAX_MATCH_COLUMNS))
+                }">
+                    {#each question.staticOptions as option, i (i)}
+                        <div class="match-component-wrapper-wrapper">
+                            <div class="match-component-wrapper">
+                                <div class="match-component {inputClasses[i]}">
+                                    <h2>{option.text}</h2>
+                                    <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo} inputAttributes={{ tabindex: 1 }}>
+                                        <div class="select-selection" slot="selection" let:selection>
+                                            {selection.label}
+                                            {#if submitted}
+                                                {#if selection.value === question.staticOptions[i].correctMatch}
+                                                    <div class="correct"></div>
+                                                {:else if selection.value === matchSelectsAtSubmit[i]}
+                                                    <div class="incorrect"></div>
+                                                {/if}
                                             {/if}
-                                        {/if}
-                                    </div>
-                                    <div class="select-item" slot="item" let:item>
-                                        {item.label}
-                                        {#if submitted}
-                                            {#if item.value === question.staticOptions[i].correctMatch}
-                                                <div class="correct"></div>
-                                            {:else if item.value === matchSelectsAtSubmit[i]}
-                                                <div class="incorrect"></div>
+                                        </div>
+                                        <div class="select-item" slot="item" let:item>
+                                            {item.label}
+                                            {#if submitted}
+                                                {#if item.value === question.staticOptions[i].correctMatch}
+                                                    <div class="correct"></div>
+                                                {:else if item.value === matchSelectsAtSubmit[i]}
+                                                    <div class="incorrect"></div>
+                                                {/if}
                                             {/if}
-                                        {/if}
-                                    </div>
-                                </Select>
+                                        </div>
+                                    </Select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {/each}
+                    {/each}
+                </div>
+            {/if}
+            <div class="submit">
+                <button bind:this={submitButton} class={submitClass} type="submit" tabindex={2}>{submitText}</button>
             </div>
-        {/if}
-        <div class="submit">
-            <button bind:this={submitButton} class={submitClass} on:click={submitQuestion}>{submitText}</button>
-        </div>
+        </form>
     </div>
 {/if}
+
 
 <style>
     :root {
@@ -294,12 +297,16 @@
         background-color: var(--initial-mcq-background);
     }
 
-    .mcq li:hover {
+    .mcq li:hover, .mcq li:has(input:focus-visible) {
         background-color: var(--hovered-mcq-background);
     }
 
     .mcq li:has(input:checked) {
         background-color: var(--selected-mcq-background);
+    }
+
+    .mcq li:has(input:focus-visible:checked, input:hover:checked) {
+        background-color: color-mix(in hsl, var(--selected-mcq-background), var(--hovered-mcq-background) 70%)
     }
 
     .mcq li label {

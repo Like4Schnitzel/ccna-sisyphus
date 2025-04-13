@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import Question from "$lib/Question.svelte";
 
     let { data } = $props();
