@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { setContext } from 'svelte';
+    import { setContext } from "svelte";
+    import { page } from "$app/state";
+
     let { children, data } = $props();
 
     // set userData context if we're signed in
@@ -7,13 +9,19 @@
         setContext("userData", data.userData);
     }
 
-    let previousQuestionHref = $state(data.previousQuestion !== undefined ? `/questions/${data.previousQuestion}` : "");
-    let nextQuestionHref = $state(data.nextQuestion !== undefined ? `/questions/${data.nextQuestion}` : "");
+    let previousQuestionHref = $derived(
+        page.data.prevQuestion ? `/questions/${page.data.prevQuestion}` : "",
+    );
+    let nextQuestionHref = $derived(
+        page.data.nextQuestion !== undefined
+            ? `/questions/${page.data.nextQuestion}`
+            : "",
+    );
 </script>
 
 <div class="main">
     <header>
-        <h1><a href="/" data-sveltekit-preload-data data-sveltekit-reload>Quiz App</a></h1>
+        <h1><a href="/">Quiz App</a></h1>
         {#if data.userData}
             <a href="/logout">{data.userData.username}</a>
         {:else}
@@ -26,13 +34,13 @@
     <nav>
         <div class="prev-wrapper">
             {#if previousQuestionHref !== ""}
-                <a data-sveltekit-preload-data data-sveltekit-reload href={previousQuestionHref}>Previous</a>
+                <a href={previousQuestionHref}>Previous</a>
             {/if}
         </div>
         <p>Gubi</p>
         <div class="next-wrapper">
             {#if nextQuestionHref !== ""}
-                <a data-sveltekit-preload-data data-sveltekit-reload href={nextQuestionHref}>Next</a>
+                <a href={nextQuestionHref}>Next</a>
             {/if}
         </div>
     </nav>

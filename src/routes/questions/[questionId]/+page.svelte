@@ -4,4 +4,6 @@
     let { data } = $props();
 </script>
 
-<Question questionDTO={data} />
+{#key data.question.id}
+    <Question questionDTO={data.question} />
+{/key}
