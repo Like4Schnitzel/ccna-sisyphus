@@ -20,7 +20,8 @@
     );
 
     function handleKeyPress(event: KeyboardEvent) {
-        if (event.target instanceof HTMLInputElement) {
+        if (event.target instanceof HTMLInputElement 
+            && event.target.type == "text") {
             return;
         }
 
