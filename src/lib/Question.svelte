@@ -153,9 +153,9 @@
                                     <img src={answer.imgSrc} />
                                 {/if}
                                 {#if correctAnswersAmount === 1}
-                                    <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} tabindex={1} />
+                                    <input type="radio" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                                 {:else}
-                                    <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} tabindex={1}/>
+                                    <input type="checkbox" name="answer" id={i.toString()} bind:this={mcqInputs[i]} value={i} bind:group={selectedAnswer} />
                                 {/if}
                             </label>
                         </li>
@@ -170,7 +170,7 @@
                             <div class="match-component-wrapper">
                                 <div class="match-component {inputClasses[i]}">
                                     <h2>{option.text}</h2>
-                                    <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo} inputAttributes={{ tabindex: 1 }}>
+                                    <Select items={question.movableOptions} bind:justValue={question.staticOptions[i].matchedTo}>
                                         <div class="select-selection" slot="selection" let:selection>
                                             {selection.label}
                                             {#if submitted}
@@ -199,7 +199,7 @@
                 </div>
             {/if}
             <div class="submit">
-                <button bind:this={submitButton} class={submitClass} type="submit" tabindex={2}>{submitText}</button>
+                <button bind:this={submitButton} class={submitClass} type="submit">{submitText}</button>
             </div>
         </form>
     </div>

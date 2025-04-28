@@ -60,7 +60,7 @@
     </nav>
 </div>
 
-<svelte:window onkeyup={handleKeyPress} />
+<svelte:window on:keydown={handleKeyPress} />
 
 <style>
     :global(body) {
