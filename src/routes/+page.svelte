@@ -7,12 +7,12 @@
 </script>
 
 <main>
-    <a class="start-first" data-sveltekit-preload-data data-sveltekit-reload href="/questions/1">start training</a>
+    <a class="start-first" href="/questions/1">start training</a>
 
     <input type="text" class="search" bind:value={searchValue} placeholder="search...">
     <section class="question-list">
-        {#each filteredQuestions as question}
-            <a data-sveltekit-preload-data data-sveltekit-reload href={`/questions/${question.id}`} class="card">
+        {#each filteredQuestions as question (question.id)}
+            <a href={`/questions/${question.id}`} class="card">
                 <b>{question.id}</b>. {question.text}
             </a>
         {/each}
